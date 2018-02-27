@@ -9,6 +9,12 @@ create table category (
   constraint pk_category primary key (id)
 );
 
+create table category_product (
+  category_id                   bigint not null,
+  product_id                    bigint not null,
+  constraint pk_category_product primary key (category_id,product_id)
+);
+
 create table customer (
   id                            bigint auto_increment not null,
   name                          varchar(255),
@@ -34,16 +40,30 @@ create table user (
   constraint pk_user primary key (email)
 );
 
+alter table category_product add constraint fk_category_product_category foreign key (category_id) references category (id) on delete restrict on update restrict;
+create index ix_category_product_category on category_product (category_id);
+
+alter table category_product add constraint fk_category_product_product foreign key (product_id) references product (id) on delete restrict on update restrict;
+create index ix_category_product_product on category_product (product_id);
+
 alter table product add constraint fk_product_category_id foreign key (category_id) references category (id) on delete restrict on update restrict;
 create index ix_product_category_id on product (category_id);
 
 
 # --- !Downs
 
+alter table category_product drop constraint if exists fk_category_product_category;
+drop index if exists ix_category_product_category;
+
+alter table category_product drop constraint if exists fk_category_product_product;
+drop index if exists ix_category_product_product;
+
 alter table product drop constraint if exists fk_product_category_id;
 drop index if exists ix_product_category_id;
 
 drop table if exists category;
+
+drop table if exists category_product;
 
 drop table if exists customer;
 

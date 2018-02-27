@@ -12,8 +12,15 @@
     @CSRF.formField
     @inputText(updateProductForm("name"), '_label -> "Name", 'class -> "form-control")
     @inputText(updateProductForm("description"), '_label -> "Description", 'class -> "form-control")
-    @select(updateProductForm("category.id"),options(Category.options),'_label -> "Category", '_default -> "-- Choose a category --", '_showConstraints -> false, 'class -> "form-control")     
 
+    @for((value, name) <- Category.options) {
+        <input type="checkbox" name="catSelect[]" value="@value"
+        @if(Category.inCategory(value.toLong, id)) {
+            checked
+        }
+        />@name<br>
+    }
+    
     @inputText(updateProductForm("stock"), '_label -> "Stock", 'class -> "form-control")
     @inputText(updateProductForm("price"), '_label -> "Price", 'class -> "form-control")
     

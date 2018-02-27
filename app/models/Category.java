@@ -10,13 +10,13 @@ import play.data.validation.*;
 @Entity
 public class Category extends Model {
     @Id
-    private Long id;
+    public Long id;
     
     @Constraints.Required
-    private String name;
+    public String name;
 
-    @OneToMany
-    private List<Product> products;
+    @ManyToMany(cascade = CascadeType.ALL)
+    public List<Product> products;
 
     public Category() {
     }
@@ -65,6 +65,13 @@ public class Category extends Model {
         }
         
         return options;
+    }
+
+    public static boolean inCategory(Long category, Long product) {
+        return find.query().where()
+        .eq("products.id", product)
+        .eq("id", category)
+        .findCount() > 0;
     }
 
 }

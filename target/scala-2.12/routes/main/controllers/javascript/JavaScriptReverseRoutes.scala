@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/home/wdd/webapps/lab2/conf/routes
-// @DATE:Tue Feb 27 11:42:21 GMT 2018
+// @SOURCE:/home/wdd/webapps/sdevLab2/conf/routes
+// @DATE:Tue Feb 27 14:09:50 GMT 2018
 
 import play.api.routing.JavaScriptReverseRoute
 
