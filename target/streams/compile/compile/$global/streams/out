@@ -1,2 +1,58 @@
-[0m[[0m[0minfo[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/controllers/HomeController.java: /home/wdd/webapps/sdevLab2/app/controllers/HomeController.java uses unchecked or unsafe operations.[0m
-[0m[[0m[0minfo[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/controllers/HomeController.java: Recompile with -Xlint:unchecked for details.[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/addProduct.scala.html:1:1: type Product is not a member of package models[0m
+[0m[[0m[31merror[0m] [0m[0m@(productForm: Form[models.Product], user: models.users.User)[0m
+[0m[[0m[31merror[0m] [0m[0m^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/addProduct.scala.html:1:28: type Product is not a member of package models[0m
+[0m[[0m[31merror[0m] [0m[0m@(productForm: Form[models.Product], user: models.users.User)[0m
+[0m[[0m[31merror[0m] [0m[0m                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/addProduct.scala.html:14:31: not found: value Category[0m
+[0m[[0m[31merror[0m] [0m[0m        @for((value, name) <- Category.options) {[0m
+[0m[[0m[31merror[0m] [0m[0m                              ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/addProduct.scala.html:35:2: type Product is not a member of package models[0m
+[0m[[0m[31merror[0m] [0m[0m}[0m
+[0m[[0m[31merror[0m] [0m[0m ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/index.scala.html:1:1: type Product is not a member of package models[0m
+[0m[[0m[31merror[0m] [0m[0m@(products: List[models.Product], categories: List[models.Category], user: models.users.User,env: play.api.Environment)[0m
+[0m[[0m[31merror[0m] [0m[0m^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/index.scala.html:1:25: type Product is not a member of package models[0m
+[0m[[0m[31merror[0m] [0m[0m@(products: List[models.Product], categories: List[models.Category], user: models.users.User,env: play.api.Environment)[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/index.scala.html:1:59: type Category is not a member of package models[0m
+[0m[[0m[31merror[0m] [0m[0m@(products: List[models.Product], categories: List[models.Category], user: models.users.User,env: play.api.Environment)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/index.scala.html:12:12: missing parameter type[0m
+[0m[[0m[31merror[0m] [0m[0m      @for(c <- categories) {[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/index.scala.html:38:14: missing parameter type[0m
+[0m[[0m[31merror[0m] [0m[0m        @for(p<-products) {[0m
+[0m[[0m[31merror[0m] [0m[0m             ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/index.scala.html:74:2: type Product is not a member of package models[0m
+[0m[[0m[31merror[0m] [0m[0m}[0m
+[0m[[0m[31merror[0m] [0m[0m ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/productDetails.scala.html:1:1: type Product is not a member of package models[0m
+[0m[[0m[31merror[0m] [0m[0m@(p: models.Product,user: models.users.User,env: play.api.Environment)[0m
+[0m[[0m[31merror[0m] [0m[0m^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/productDetails.scala.html:1:13: type Product is not a member of package models[0m
+[0m[[0m[31merror[0m] [0m[0m@(p: models.Product,user: models.users.User,env: play.api.Environment)[0m
+[0m[[0m[31merror[0m] [0m[0m            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/productDetails.scala.html:38:2: type Product is not a member of package models[0m
+[0m[[0m[31merror[0m] [0m[0m}[0m
+[0m[[0m[31merror[0m] [0m[0m ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/updateProduct.scala.html:1:1: type Product is not a member of package models[0m
+[0m[[0m[31merror[0m] [0m[0m@(id: Long, updateProductForm: Form[models.Product], user: models.users.User)[0m
+[0m[[0m[31merror[0m] [0m[0m^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/updateProduct.scala.html:1:44: type Product is not a member of package models[0m
+[0m[[0m[31merror[0m] [0m[0m@(id: Long, updateProductForm: Form[models.Product], user: models.users.User)[0m
+[0m[[0m[31merror[0m] [0m[0m                                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/updateProduct.scala.html:16:27: not found: value Category[0m
+[0m[[0m[31merror[0m] [0m[0m    @for((value, name) <- Category.options) {[0m
+[0m[[0m[31merror[0m] [0m[0m                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/updateProduct.scala.html:18:13: not found: value Category[0m
+[0m[[0m[31merror[0m] [0m[0m        @if(Category.inCategory(value.toLong, id)) {[0m
+[0m[[0m[31merror[0m] [0m[0m            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/updateProduct.scala.html:18:39: value toLong is not a member of Any[0m
+[0m[[0m[31merror[0m] [0m[0m        @if(Category.inCategory(value.toLong, id)) {[0m
+[0m[[0m[31merror[0m] [0m[0m                                      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevLab2/app/views/updateProduct.scala.html:38:2: type Product is not a member of package models[0m
+[0m[[0m[31merror[0m] [0m[0m}[0m
+[0m[[0m[31merror[0m] [0m[0m ^[0m
+[0m[[0m[31merror[0m] [0m[0m19 errors found[0m
