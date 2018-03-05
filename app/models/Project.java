@@ -18,6 +18,12 @@ public class Project extends Model {
     @ManyToMany(cascade = CascadeType.ALL)
     public List<Product> projects;
 
+    public static final Finder<Long, Project> find = new Finder<>(Project.class);
+
+    public static final List<Project> findAll() {          
+        return Project.find.all();
+    }
+
     public Project() {
     }
 

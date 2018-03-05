@@ -43,16 +43,16 @@ public class HomeController extends Controller {
             this.e = env;
         }
     
-        public Result index(Long cat) {
-            List<Product> productList = null;
-            List<Category> categoryList = Category.findAll();
-            if (cat == 0) {
-                productList = Product.findAll();
+        public Result index(Long pro) {
+            List<Employee> empList = null;
+            List<Project> projectList = Project.findAll();
+            if (pro == 0) {
+                empList = Project.findAll();
             }
             else {
-                productList = Category.find.ref(cat).getProducts();
+                empList = Category.find.ref(cat).getEmployees();
             }
-            return ok(index.render(productList, categoryList, User.getUserById(session().get("email")),e));
+            return ok(index.render(empList, projectList, User.getUserById(session().get("email")),e));
         }
 
     public Result customer() {
@@ -61,30 +61,30 @@ public class HomeController extends Controller {
     }
     @Security.Authenticated(Secured.class)
     @With(AuthAdmin.class)
-    public Result addProduct() {
-        Form<Product> productForm = formFactory.form(Product.class);
-        return ok(addProduct.render(productForm, User.getUserById(session().get("email"))));
+    public Result addEmployee() {
+        Form<Employee> employeeForm = formFactory.form(Employee.class);
+        return ok(addEmployee.render(employeeForm, User.getUserById(session().get("email"))));
     }
-    public Result addProductSubmit() {
-        Product newProduct;
-        Form<Product> newProductForm = formFactory.form(Product.class).bindFromRequest();
+    public Result addEmployeeSubmit() {
+        Employee newEmployee;
+        Form<Employee> newEmployeeForm = formFactory.form(Employee.class).bindFromRequest();
 
-        if (newProductForm.hasErrors()) {
-            return badRequest(addProduct.render(newProductForm, User.getUserById(session().get("email"))));
+        if (newEmployeeForm.hasErrors()) {
+            return badRequest(addEmployee.render(newEmployeeForm, User.getUserById(session().get("email"))));
         } 
         else {
-            newProduct = newProductForm.get();
+            newEmployee = newEmployeeForm.get();
 
-            if (newProduct.getId() == null) {
+            if (newEmployee.getId() == null) {
 
-                newProduct.save();
+                newEmployee.save();
 
-                for (Long cat : newProduct.getCatSelect()) {
-                    newProduct.categories.add(Category.find.byId(cat));
+                for (Long cat : newEmployee.getCatSelect()) {
+                    newEmployee.categories.add(Category.find.byId(cat));
                 }
-            newProduct.update();
+            newEmployee.update();
 
-            flash("success", "Product " + newProduct.getName() + " was updated");
+            flash("success", "Employee " + newEmployee.getName() + " was updated");
         }
     }
 
@@ -93,9 +93,9 @@ public class HomeController extends Controller {
         MultipartFormData data = request().body().asMultipartFormData();
         FilePart<File> image = data.getFile("upload");
 
-        String saveImageMsg = saveFile(newProduct.getId(), image);
+        String saveImageMsg = saveFile(newEmployee.getId(), image);
 
-        flash("success", "Product " + newProduct.getName() + " has been created/updated " + saveImageMsg);
+        flash("success", "Employee " + newEmployee.getName() + " has been created/updated " + saveImageMsg);
 
         return redirect(controllers.routes.HomeController.index(0));
     }
@@ -136,10 +136,10 @@ public class HomeController extends Controller {
     @Security.Authenticated(Secured.class)
     @With(AuthAdmin.class)
     @Transactional
-    public Result deleteProduct(Long id) {
-        Product.find.ref(id).delete();
+    public Result deleteEmployee(Long id) {
+        Employee.find.ref(id).delete();
 
-        flash("success", "Product has been deleted");
+        flash("success", "Employee has been deleted");
         
         return redirect(routes.HomeController.index(0));
     }
@@ -153,18 +153,18 @@ public class HomeController extends Controller {
     @Security.Authenticated(Secured.class)
     @With(AuthAdmin.class)
     @Transactional
-    public Result updateProduct(Long id) {
-        Product p;
-        Form<Product> productForm;
+    public Result updateEmployee(Long id) {
+        Employee e;
+        Form<Employee> employeeForm;
 
         try {
-            p = Product.find.byId(id);
-            productForm = formFactory.form(Product.class).fill(p);
+            e = Employee.find.byId(id);
+            employeeForm = formFactory.form(Employee.class).fill(e);
         } 
         catch (Exception ex) {
             return badRequest("error");
         }
-        return ok(updateProduct.render(id, productForm,User.getUserById(session().get("email"))));
+        return ok(updateEmployee.render(id, employeeForm,User.getUserById(session().get("email"))));
     }
     @Transactional
     public Result updateCustomer(Long id) {        
@@ -201,15 +201,15 @@ public class HomeController extends Controller {
                 // resize the image using height and width saveFileOld(Long id, FilePart<File> uploaded) {
                 op.resize(300, 200);
                 // save the image as jpg 
-                op.addImage("public/images/productImages/" + id + ".jpg");
+                op.addImage("public/images/employeeImages/" + id + ".jpg");
                 // create another Image Magick operation and repeat the process above to
                 // specify how a thumbnail image should be processed - size 60px
                 IMOperation thumb = new IMOperation();
                 thumb.addImage(file.getAbsolutePath());
                 thumb.resize(60);
-                thumb.addImage("public/images/productImages/thumbnails/" + id + ".jpg");
+                thumb.addImage("public/images/employeeImages/thumbnails/" + id + ".jpg");
                 // we must make sure that the directories exist before running the operations
-                File dir = new File("public/images/productImages/thumbnails/");
+                File dir = new File("public/images/employeeImages/thumbnails/");
                 if (!dir.exists()) {
                     dir.mkdirs();
                 }
@@ -244,14 +244,14 @@ public class HomeController extends Controller {
                 // directory)
                 File file = uploaded.getFile();
                 // we must make sure that the directory for the images exists before we save it
-                File dir = new File("public/images/productImages");
+                File dir = new File("public/images/employeeImages");
                 if (!dir.exists()) {
                     dir.mkdirs();
                 }
                 // move the file to the required location (in a real application 
                 // the path to where images are stored would be configurable, but 
                 // for the lab we just hard-code it)
-                if(file.renameTo(new File("public/images/productImages/", id + "." + extension))) {
+                if(file.renameTo(new File("public/images/employeeImages/", id + "." + extension))) {
                     return "/ file uploaded";
                 } else {
                     return "/ file upload failed";
@@ -260,43 +260,43 @@ public class HomeController extends Controller {
         }
         return "";
     }
-    public Result productDetails(Long id) {
-        Product p;
+    public Result employeeDetails(Long id) {
+        Employee e;
 
-        p = Product.find.byId(id);
+        e = Employee.find.byId(id);
             
-        return ok(productDetails.render(p,User.getUserById(session().get("email")),e));
+        return ok(employeeDetails.render(e,User.getUserById(session().get("email")),e));
     }
 
-    public Result updateProductSubmit(Long id) {
+    public Result updateEmployeeSubmit(Long id) {
         
         // Retrieve the submitted form object (bind from the HTTP request)
-        Form<Product> updateProductForm = formFactory.form(Product.class).bindFromRequest();
+        Form<Employee> updateEmployeeForm = formFactory.form(Employee.class).bindFromRequest();
 
-        // Check for errors (based on constraints set in the Product class)
-        if (updateProductForm.hasErrors()) {
+        // Check for errors (based on constraints set in the Employee class)
+        if (updateEmployeeForm.hasErrors()) {
             // Display the form again by returning a bad request
-            return badRequest(updateProduct.render(id,updateProductForm, User.getUserById(session().get("email"))));
+            return badRequest(updateEmployee.render(id,updateEmployeeForm, User.getUserById(session().get("email"))));
         } else {
-            // No errors found - extract the product detail from the form
-            Product p = updateProductForm.get();
-            p.setId(id);
+            // No errors found - extract the employee detail from the form
+            Employee e = updateEmployeeForm.get();
+            e.setId(id);
             
             List<Category> newCats = new ArrayList<Category>();
-            for (Long cat : p.getCatSelect()) {
+            for (Long cat : e.getCatSelect()) {
                 newCats.add(Category.find.byId(cat));
             }
-            p.categories = newCats;
+            e.categories = newCats;
             
-            //update (save) this product
-            p.update();
+            //update (save) this employee
+            e.update();
 
             MultipartFormData data = request().body().asMultipartFormData();
             FilePart<File> image = data.getFile("upload");
 
-            String saveImageMsg = saveFile(p.getId(), image);
+            String saveImageMsg = saveFile(e.getId(), image);
 
-            flash("success", "Product " + p.getName() + " has been  updated " + saveImageMsg);
+            flash("success", "Employee " + e.getName() + " has been  updated " + saveImageMsg);
             
             // Redirect to the index page
             return redirect(controllers.routes.HomeController.index(0));

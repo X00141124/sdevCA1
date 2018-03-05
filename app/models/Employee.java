@@ -19,22 +19,13 @@ public class Employee extends Model {
 
         @Constraints.Required
         private String name;
-        @ManyToOne
-        private Category category;
-        @OneToOne(cascade = CascadeType.REMOVE) 
-        @JoinColumn(name = "AID")
+
+        @OneToOne(cascade = CascadeType.REMOVE)
         private Address address;
-
-
 
         private List<Project> pList = new ArrayList<>();
 
-        public static final Finder<Long, Project> find = new Finder<>(Product.class);
-    
-
-        public static final List<Project> findAll() {          
-                    return Project.find.all();
-        }
+        
         // Default Constructor
         public Employee() {
         }
@@ -64,11 +55,9 @@ public class Employee extends Model {
         public void setpList(List<Project> pList) {
             this.pList = pList;
         }
-
         public Address getAddress() {
             return address;
         }
-    
         public void setAddress(Address address) {
             this.address = address;
         }
