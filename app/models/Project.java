@@ -16,21 +16,18 @@ public class Project extends Model {
     public String name;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    public List<Product> projects;
+    public List<Employee> employees;
 
     public static final Finder<Long, Project> find = new Finder<>(Project.class);
 
-    public static final List<Project> findAll() {          
-        return Project.find.all();
-    }
 
     public Project() {
     }
 
-    public Project(Long id, String name, List<Project> projects) {
+    public Project(Long id, String name, List<Employee> employees) {
         this.id = id;
         this.name = name;
-        this.projects = projects;
+        this.employees = employees;
     }
 
     public Long getId() {
@@ -49,24 +46,22 @@ public class Project extends Model {
         this.name = name;
     }
 
-    public List<Project> getProjects() {
-        return projects;
+    public List<Employee> getEmployees() {
+        return employees;
     }
 
-    public void setProjects(List<Product> projects) {
-        this.projects = projects;
+    public void setProjects(List<Employee> employees) {
+        this.employees = employees;
     }
 
-    public static Finder<Long, Project> find = new Finder<Long, Project>(Project.class);
-
-    public static List<Category> findAll() {
-        return Category.find.query().where().orderBy("name asc").findList();
+    public static List<Project> findAll() {
+        return Project.find.query().where().orderBy("name asc").findList();
     }
 
     public static Map<String, String> options() {
         LinkedHashMap<String, String> options = new LinkedHashMap();
 
-        for (Category c: Category.findAll()) {
+        for (Project c: Project.findAll()) {
             options.put(c.getId().toString(), c.getName());
         }
         

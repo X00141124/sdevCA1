@@ -1,17 +1,17 @@
-@(products: List[models.Product], categories: List[models.Category], user: models.users.User,env: play.api.Environment)
+@(employees: List[models.Employee], projects: List[models.Project], user: models.users.User,env: play.api.Environment)
 
-@main("Products",user) {
+@main("Employees",user) {
 
-<p class="lead">Product Catalogue</p>
+<p class="lead">Employee</p>
 <br>
 <div class="row">
   <div class="col-sm-2">
-    <h4>Categories</h4>
+    <h4>Project</h4>
     <div class="list-group">
-      <a href="@routes.HomeController.index(0)" class="list-group-item">All Categories</a>
-      @for(c <- categories) {
-        <a href="@routes.HomeController.index(c.getId)" class="list-group-item">@c.getName
-          <span class="badge">@c.getProducts.size()</span>
+      <a href="@routes.HomeController.index(0)" class="list-group-item">All Projects</a>
+      @for(p <- projects) {
+        <a href="@routes.HomeController.index(p.getId)" class="list-group-item">@p.getName
+          <span class="badge">@p.getEmployees.size()</span>
         </a>
       }
     </div>
@@ -35,26 +35,25 @@
       </thead>
 
       <tbody>
-        @for(p<-products) {
+        @for(e<-employees) {
           <tr>
-              @if(env.resource("public/images/productImages/thumbnails/" + p.getId + ".jpg").isDefined) {
-                <td><img src="/assets/images/productImages/thumbnails/@(p.getId + ".jpg")"/></td>
+              @if(env.resource("public/images/employeeImages/thumbnails/" + e.getId + ".jpg").isDefined) {
+                <td><img src="/assets/images/employeeImages/thumbnails/@(e.getId + ".jpg")"/></td>
             } else {
-                <td><img src="/assets/images/productImages/thumbnails/noImage.jpg"/></td>
+                <td><img src="/assets/images/employeeImages/thumbnails/noImage.jpg"/></td>
             }
-            <td class="numeric">@p.getId</td>
-            <td><a href="@routes.HomeController.productDetails(p.getId)">
-                @p.getName</td>
+            <td class="numeric">@e.getId</td>
+            <td><a href="@routes.HomeController.employeeDetails(e.getId)">
+                @e.getName</td>
                </a>        
-            <td>@p.getDescription</td>
-            <td  class="numeric">@p.getStock</td>
-            <td  class="numeric">€ @("%.2f".format(p.getPrice))</td>
+            <td>@e.getAddress</td>
+            <td  class="String">@e.getAddress</td>
             <td>
-              <a href="@routes.HomeController.updateProduct(p.getId)" class="button xs btn-danger">
+              <a href="@routes.HomeController.updateEmployee(e.getId)" class="button xs btn-danger">
                 <span class="glyphicon glyphicon-pencil"></span>
               </a>
             </td>        <td>
-              <a href="@routes.HomeController.deleteProduct(p.getId)" class="button xs btn-danger" onclick="return confirmDel();">
+              <a href="@routes.HomeController.deleteEmployee(e.getId)" class="button xs btn-danger" onclick="return confirmDel();">
                 <span class="glyphicon glyphicon-trash"></span>
               </a>
             </td>
@@ -65,8 +64,8 @@
     </table>
 
     <p>
-      <a href="@routes.HomeController.addProduct()">
-        <button class="btn btn-primary">Add a product</button>
+      <a href="@routes.HomeController.addEmployee()">
+        <button class="btn btn-primary">Add a employee</button>
       </a>
     </p>
   </div>

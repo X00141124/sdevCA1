@@ -23,7 +23,9 @@ public class Employee extends Model {
         @OneToOne(cascade = CascadeType.REMOVE)
         private Address address;
 
-        private List<Project> pList = new ArrayList<>();
+        //private List<Project> pList = new ArrayList<>();
+
+        public List<Long> proSelect = new ArrayList<Long>();
 
         
         // Default Constructor
@@ -49,11 +51,14 @@ public class Employee extends Model {
         public void setName(String name) {
             this.name = name;
         }
-        public List<Project> getpList() {
-            return pList;
-        }
-        public void setpList(List<Project> pList) {
-            this.pList = pList;
+        // public List<Project> getpList() {
+        //     return pList;
+        // }
+        // public void setpList(List<Project> pList) {
+        //     this.pList = pList;
+        // }
+        public List<Long> getProSelect() {
+            return proSelect;
         }
         public Address getAddress() {
             return address;

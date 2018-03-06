@@ -50,14 +50,14 @@ public class HomeController extends Controller {
                 empList = Project.findAll();
             }
             else {
-                empList = Category.find.ref(cat).getEmployees();
+                empList = Project.find.ref(pro).getEmployees();
             }
             return ok(index.render(empList, projectList, User.getUserById(session().get("email")),e));
         }
 
-    public Result customer() {
-        List<Customer> customerList = Customer.findAll();
-        return ok(customer.render(customerList,User.getUserById(session().get("email"))));
+    public Result Department() {
+        List<Department> deptList = Department.findAll();
+        return ok(Department.render(deptList,User.getUserById(session().get("email"))));
     }
     @Security.Authenticated(Secured.class)
     @With(AuthAdmin.class)
@@ -79,8 +79,8 @@ public class HomeController extends Controller {
 
                 newEmployee.save();
 
-                for (Long cat : newEmployee.getCatSelect()) {
-                    newEmployee.categories.add(Category.find.byId(cat));
+                for (Long proj : newEmployee.getProSelect()) {
+                    newEmployee.projects.add(Project.find.byId(proj));
                 }
             newEmployee.update();
 
@@ -99,40 +99,7 @@ public class HomeController extends Controller {
 
         return redirect(controllers.routes.HomeController.index(0));
     }
-    @Security.Authenticated(Secured.class)
-    @With(AuthAdmin.class)
-    @Transactional
-    public Result addCustomer() {
-        Form<Customer> customerForm = formFactory.form(Customer.class);
-        return ok(addCustomer.render(customerForm,User.getUserById(session().get("email"))));
-    }
-
-    public Result addCustomerSubmit() {
-        Form<Customer> newCustomerForm = formFactory.form(Customer.class).bindFromRequest();
-        
-
-        if (newCustomerForm.hasErrors()) {
-            return badRequest(addCustomer.render(newCustomerForm,User.getUserById(session().get("email"))));
-            
-        } 
-        else {
-            Customer newCustomer = newCustomerForm.get();
-            
-            if (newCustomer.getId() == null) {
-                newCustomer.save();
-                flash("success", "Customer " + newCustomer.getName() + " was added");                
-            }
-
-            else {
-                newCustomer.update();
-                flash("success", "Customer " + newCustomer.getName() + " was updated");                
-            }
-
-
-
-            return redirect(controllers.routes.HomeController.customer());
-        }
-    }
+    
     @Security.Authenticated(Secured.class)
     @With(AuthAdmin.class)
     @Transactional
@@ -143,13 +110,6 @@ public class HomeController extends Controller {
         
         return redirect(routes.HomeController.index(0));
     }
-    public Result deleteCustomer(Long id) {
-        Customer.find.ref(id).delete();
-        flash("success", "Customer has been deleted");
-
-        return redirect(routes.HomeController.index(0));
-    }
-
     @Security.Authenticated(Secured.class)
     @With(AuthAdmin.class)
     @Transactional
@@ -165,21 +125,6 @@ public class HomeController extends Controller {
             return badRequest("error");
         }
         return ok(updateEmployee.render(id, employeeForm,User.getUserById(session().get("email"))));
-    }
-    @Transactional
-    public Result updateCustomer(Long id) {        
-        Customer c;
-        Form<Customer> customerForm;
-
-        try {
-            c = Customer.find.byId(id);
-            customerForm = formFactory.form(Customer.class).fill(c);
-        }
-        catch (Exception ex) {
-            return badRequest("error");
-        }
-
-        return ok(addCustomer.render(customerForm,User.getUserById(session().get("email"))));
     }
     public String saveFile(Long id, FilePart<File> uploaded) {
         // make sure that the file exists
@@ -282,11 +227,11 @@ public class HomeController extends Controller {
             Employee e = updateEmployeeForm.get();
             e.setId(id);
             
-            List<Category> newCats = new ArrayList<Category>();
-            for (Long cat : e.getCatSelect()) {
-                newCats.add(Category.find.byId(cat));
+            List<Project> newProjs = new ArrayList<Project>();
+            for (Long proj : e.getCatSelect()) {
+                newCats.add(Project.find.byId(proj));
             }
-            e.categories = newCats;
+            e.projects = newProjs;
             
             //update (save) this employee
             e.update();
