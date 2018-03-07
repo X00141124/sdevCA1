@@ -1,4 +1,4 @@
-@(p: models.Employee,user: models.users.User,env: play.api.Environment)
+@(e: models.Employee,user: models.users.User,env: play.api.Environment)
 
 @main("Full Image", user) {
 
@@ -19,12 +19,12 @@
       <tbody>
 
           <tr>
-              @if(env.resource("public/images/employeeImages/" + p.getId + ".jpg").isDefined) {
-                <td><img src="/assets/images/employeeImages/@(p.getId + ".jpg")"/></td>
+              @if(env.resource("public/images/employeeImages/" + e.getId + ".jpg").isDefined) {
+                <td><img src="/assets/images/employeeImages/@(e.getId + ".jpg")"/></td>
             } else {
                 <td><img src="/assets/images/employeeImages/noImage.jpg"/></td>
             }
-            <td class="numeric">@p.getId</td>
+            <td class="numeric">@e.getId</td>
             
           </tr>
         

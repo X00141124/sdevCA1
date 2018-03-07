@@ -4,8 +4,8 @@
 # --- !Ups
 delete from user;
 
-insert into user (email,name,password,role) values ( 'admin@products.com', 'Alice Admin', 'password', 'admin' );
+insert into user (email,name,password,role) values ( 'admin@easyltd.com', 'Kathleen Admin', 'password', 'admin' );
 
-insert into user (email,name,password,role) values ( 'manager@products.com', 'Bob Manager', 'password', 'manager' );
+insert into user (email,name,password,role) values ( 'manager@easyltd.com', 'Carol Manager', 'password', 'manager' );
 
-insert into user (email,name,password,role) values ( 'customer@products.com', 'Charlie Customer', 'password', 'customer' );
+insert into user (email,name,password,role) values ( 'customer@easyltd.com', 'Frank Customer', 'password', 'customer' );

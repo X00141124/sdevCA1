@@ -47,7 +47,7 @@ public class HomeController extends Controller {
             List<Employee> empList = null;
             List<Project> projectList = Project.findAll();
             if (pro == 0) {
-                empList = Project.findAll();
+                empList = Employee.findAll();
             }
             else {
                 empList = Project.find.ref(pro).getEmployees();
