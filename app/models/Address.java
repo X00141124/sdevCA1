@@ -28,6 +28,8 @@ public class Address extends Model{
         this.eirCode = eirCode;
     }
 
+    public static final Finder<Long, Address> find = new Finder<>(Address.class);
+
     
     public static final List<Address> findAll() {
         return Address.find.all();

@@ -55,9 +55,9 @@ public class HomeController extends Controller {
             return ok(index.render(empList, projectList, User.getUserById(session().get("email")),e));
         }
 
-    public Result Department() {
+    public Result department() {
         List<Department> deptList = Department.findAll();
-        return ok(Department.render(deptList,User.getUserById(session().get("email"))));
+        return ok(department.render(deptList,User.getUserById(session().get("email"))));
     }
     @Security.Authenticated(Secured.class)
     @With(AuthAdmin.class)
@@ -205,13 +205,6 @@ public class HomeController extends Controller {
         }
         return "";
     }
-    public Result employeeDetails(Long id) {
-        Employee e;
-
-        e = Employee.find.byId(id);
-            
-        return ok(employeeDetails.render(e,User.getUserById(session().get("email")),e));
-    }
 
     public Result updateEmployeeSubmit(Long id) {
         
@@ -228,8 +221,8 @@ public class HomeController extends Controller {
             e.setId(id);
             
             List<Project> newProjs = new ArrayList<Project>();
-            for (Long proj : e.getCatSelect()) {
-                newCats.add(Project.find.byId(proj));
+            for (Long proj : e.getProSelect()) {
+                newProjs.add(Project.find.byId(proj));
             }
             e.projects = newProjs;
             

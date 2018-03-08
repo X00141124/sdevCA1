@@ -2,58 +2,5 @@
 [0m[[0m[33mwarn[0m] [0m[0m                @loginForm.globalError.message;[0m
 [0m[[0m[33mwarn[0m] [0m[0m                           ^[0m
 [0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java:50:1:  java.util.List<models.Project> cannot be converted to java.util.List<models.Employee>[0m
-[0m[[0m[31merror[0m] [0m[0m                empList = Project.findAll();[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java:53:1: cannot find symbol[0m
-[0m[[0m[31merror[0m] [0m[0m  symbol:   variable cat[0m
-[0m[[0m[31merror[0m] [0m[0m  location: class controllers.HomeController[0m
-[0m[[0m[31merror[0m] [0m[0m                empList = Category.find.ref(cat).getEmployees();[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java:53:1: package Category does not exist[0m
-[0m[[0m[31merror[0m] [0m[0m                empList = Category.find.ref(cat).getEmployees();[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java:59:1: cannot find symbol[0m
-[0m[[0m[31merror[0m] [0m[0m  symbol:   method findAll()[0m
-[0m[[0m[31merror[0m] [0m[0m  location: class models.Department[0m
-[0m[[0m[31merror[0m] [0m[0m        List<Department> deptList = Department.findAll();[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java:60:1: cannot find symbol[0m
-[0m[[0m[31merror[0m] [0m[0m  symbol:   method render(java.util.List<models.Department>,models.users.User)[0m
-[0m[[0m[31merror[0m] [0m[0m  location: class models.Department[0m
-[0m[[0m[31merror[0m] [0m[0m        return ok(Department.render(deptList,User.getUserById(session().get("email"))));[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java:107:1: cannot find symbol[0m
-[0m[[0m[31merror[0m] [0m[0m  symbol:   variable find[0m
-[0m[[0m[31merror[0m] [0m[0m  location: class models.Employee[0m
-[0m[[0m[31merror[0m] [0m[0m        Employee.find.ref(id).delete();[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java:121:1: cannot find symbol[0m
-[0m[[0m[31merror[0m] [0m[0m  symbol:   variable find[0m
-[0m[[0m[31merror[0m] [0m[0m  location: class models.Employee[0m
-[0m[[0m[31merror[0m] [0m[0m            e = Employee.find.byId(id);[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java:211:1: cannot find symbol[0m
-[0m[[0m[31merror[0m] [0m[0m  symbol:   variable find[0m
-[0m[[0m[31merror[0m] [0m[0m  location: class models.Employee[0m
-[0m[[0m[31merror[0m] [0m[0m        e = Employee.find.byId(id);[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java:213:1:  models.Employee cannot be converted to play.api.Environment[0m
-[0m[[0m[31merror[0m] [0m[0m        return ok(employeeDetails.render(e,User.getUserById(session().get("email")),e));[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java:230:1: cannot find symbol[0m
-[0m[[0m[31merror[0m] [0m[0m  symbol:   class Category[0m
-[0m[[0m[31merror[0m] [0m[0m  location: class controllers.HomeController[0m
-[0m[[0m[31merror[0m] [0m[0m            List<Category> newCats = new ArrayList<Category>();[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java:230:1: cannot find symbol[0m
-[0m[[0m[31merror[0m] [0m[0m  symbol:   class Category[0m
-[0m[[0m[31merror[0m] [0m[0m  location: class controllers.HomeController[0m
-[0m[[0m[31merror[0m] [0m[0m            List<Category> newCats = new ArrayList<Category>();[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java:231:1: cannot find symbol[0m
-[0m[[0m[31merror[0m] [0m[0m  symbol:   method getCatSelect()[0m
-[0m[[0m[31merror[0m] [0m[0m  location: variable e of type models.Employee[0m
-[0m[[0m[31merror[0m] [0m[0m            for (Long cat : e.getCatSelect()) {[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java:232:1: package Category does not exist[0m
-[0m[[0m[31merror[0m] [0m[0m                newCats.add(Category.find.byId(cat));[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java:234:1: cannot find symbol[0m
-[0m[[0m[31merror[0m] [0m[0m  symbol:   variable categories[0m
-[0m[[0m[31merror[0m] [0m[0m  location: variable e of type models.Employee[0m
-[0m[[0m[31merror[0m] [0m[0m            e.categories = newCats;[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/models/Address.java:33:1: cannot find symbol[0m
-[0m[[0m[31merror[0m] [0m[0m  symbol:   variable find[0m
-[0m[[0m[31merror[0m] [0m[0m  location: class models.Address[0m
-[0m[[0m[31merror[0m] [0m[0m        return Address.find.all();[0m
 [0m[[0m[0minfo[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java: Some input files use unchecked or unsafe operations.[0m
 [0m[[0m[0minfo[0m] [0m[0m/home/wdd/webapps/sdevCA/app/controllers/HomeController.java: Recompile with -Xlint:unchecked for details.[0m
-[0m[[0m[0minfo[0m] [0m[0mSome messages have been simplified; recompile with -Xdiags:verbose to get full output[0m

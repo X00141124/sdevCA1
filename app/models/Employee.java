@@ -14,7 +14,7 @@ public class Employee extends Model {
         @Id
         private Long id;
         // many to many mapping 
-        @ManyToMany(cascade = CascadeType.ALL, mappedBy = "projects")
+        @ManyToMany(cascade = CascadeType.ALL, mappedBy = "employees")
         public List<Project> projects;
 
         @Constraints.Required
@@ -27,15 +27,22 @@ public class Employee extends Model {
 
         public List<Long> proSelect = new ArrayList<Long>();
 
+        public static final Finder<Long, Employee> find = new Finder<>(Employee.class);
         
+        public static final List<Employee> findAll() { 
+            
+            return Employee.find.all();
+        }
+
         // Default Constructor
         public Employee() {
         }
     
         // Constructor to initialise object
-        public Employee(Long id, String name) {
+        public Employee(Long id, String name, Address add) {
             this.id = id;
             this.name = name;
+            this.address = add;
         }
     
         // Accessor methods

@@ -18,9 +18,6 @@ public class Project extends Model {
     @ManyToMany(cascade = CascadeType.ALL)
     public List<Employee> employees;
 
-    public static final Finder<Long, Project> find = new Finder<>(Project.class);
-
-
     public Project() {
     }
 
@@ -54,6 +51,8 @@ public class Project extends Model {
         this.employees = employees;
     }
 
+    public static Finder<Long, Project> find = new Finder<Long, Project>(Project.class);
+
     public static List<Project> findAll() {
         return Project.find.query().where().orderBy("name asc").findList();
     }
@@ -61,8 +60,8 @@ public class Project extends Model {
     public static Map<String, String> options() {
         LinkedHashMap<String, String> options = new LinkedHashMap();
 
-        for (Project c: Project.findAll()) {
-            options.put(c.getId().toString(), c.getName());
+        for (Project p: Project.findAll()) {
+            options.put(p.getId().toString(), p.getName());
         }
         
         return options;
@@ -70,8 +69,8 @@ public class Project extends Model {
 
     public static boolean inProject(Long emp, Long project) {
         return find.query().where()
-        .eq("projects.id", project)
-        .eq("id", emp)
+        .eq("employees.id", emp)
+        .eq("id", project)
         .findCount() > 0;
     }
 

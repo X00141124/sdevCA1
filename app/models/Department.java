@@ -11,7 +11,7 @@ import play.data.validation.*;
 public class Department extends Model{
 
     @Id
-    private int did;
+    private Long id;
     @Constraints.Required
     private String depName;   
  
@@ -21,8 +21,15 @@ public class Department extends Model{
     public Department() {
     }
 
-    public Department(String deptName) {
+    public Department(Long id, String deptName) {
+        this.id = id;
         this.depName = deptName;
+    }
+
+    public static final Finder<Long, Department> find = new Finder<>(Department.class);
+
+    public static final List<Department> findAll() {
+        return Department.find.all();
     }
 
     public String getDeptName() {
@@ -33,12 +40,12 @@ public class Department extends Model{
         this.depName = deptName;
     }
 
-    public int getDeptID() {
-        return did;
+    public Long getDeptID() {
+        return id;
     }
 
-    public void setDeptID(int deptID) {
-        this.did = deptID;
+    public void setDeptID(Long deptID) {
+        this.id = deptID;
     }
 
     public List<Employee> getElist() {

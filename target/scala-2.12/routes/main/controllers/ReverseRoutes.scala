@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/wdd/webapps/sdevCA/conf/routes
-// @DATE:Tue Mar 06 16:29:32 GMT 2018
+// @DATE:Thu Mar 08 14:28:49 GMT 2018
 
 import play.api.mvc.Call
 
@@ -43,19 +43,13 @@ package controllers {
       Call("GET", _prefix + play.core.routing.queryString(List(if(cat == 0L) None else Some(implicitly[play.api.mvc.QueryStringBindable[Long]].unbind("cat", cat)))))
     }
   
-    // @LINE:12
-    def employeeDetails(id:Long): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "employeeDetails/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id)))
-    }
-  
     // @LINE:7
     def addEmployee(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "addEmployee")
     }
   
-    // @LINE:18
+    // @LINE:17
     def updateEmployeeSubmit(id:Long): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "updateEmployeeSubmit/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("id", id)))
@@ -63,26 +57,26 @@ package controllers {
   
   }
 
-  // @LINE:14
+  // @LINE:13
   class ReverseLoginController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:15
+    // @LINE:14
     def loginSubmit(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "loginSubmit")
     }
   
-    // @LINE:16
+    // @LINE:15
     def logout(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "logout")
     }
   
-    // @LINE:14
+    // @LINE:13
     def login(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "login")
@@ -90,14 +84,14 @@ package controllers {
   
   }
 
-  // @LINE:21
+  // @LINE:20
   class ReverseAssets(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:21
+    // @LINE:20
     def versioned(file:Asset): Call = {
       implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("path", "/public"))); _rrc
       Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[play.api.mvc.PathBindable[Asset]].unbind("file", file))
