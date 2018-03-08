@@ -1,6 +1,11 @@
-# --- Sample dataset
+# --- !Ups
+
 
 # --- !Ups
-insert into customer (id,name, email) values (1, 'peter',  'petermarting@gmail.com');
-insert into customer (id,name, email) values (2, 'Jimmy',  'jimhen@gmail.com');
-insert into customer (id,name, email) values (3, 'Barry', 'breilly@gmail.com');
+delete from user;
+
+insert into user (email,name,password,role) values ( 'admin@easyltd.com', 'Kathleen Admin', 'password', 'admin' );
+
+insert into user (email,name,password,role) values ( 'manager@easyltd.com', 'Carol Manager', 'password', 'manager' );
+
+insert into user (email,name,password,role) values ( 'customer@easyltd.com', 'Frank Customer', 'password', 'customer' );

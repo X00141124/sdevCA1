@@ -32,12 +32,12 @@ public class Department extends Model{
         return Department.find.all();
     }
 
-    public String getDeptName() {
+    public String getDepName() {
         return depName;
     }
 
-    public void setDeptName(String deptName) {
-        this.depName = deptName;
+    public void setDeptName(String depName) {
+        this.depName = depName;
     }
 
     public Long getDeptID() {

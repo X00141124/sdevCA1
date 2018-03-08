@@ -23,6 +23,9 @@ public class Employee extends Model {
         @OneToOne(cascade = CascadeType.REMOVE)
         private Address address;
 
+        @ManyToOne(cascade = CascadeType.ALL)
+        private Department department;
+
         //private List<Project> pList = new ArrayList<>();
 
         public List<Long> proSelect = new ArrayList<Long>();
@@ -72,6 +75,12 @@ public class Employee extends Model {
         }
         public void setAddress(Address address) {
             this.address = address;
+        }
+        public Department getDepartment() {
+            return department;
+        }
+        public void setDepartment(Department department) {
+            this.department = department;
         }
     }
     

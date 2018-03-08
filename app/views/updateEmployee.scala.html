@@ -14,15 +14,14 @@
     @inputText(updateEmployeeForm("address"), '_label -> "Address", 'class -> "form-control")
 
     @for((value, name) <- Project.options) {
-        <input type="checkbox" name="catSelect[]" value="@value"
+        <input type="checkbox" name="proSelect[]" value="@value"
         @if(Project.inProject(value.toLong, id)) {
             checked
         }
         />@name<br>
     }
     
-    @inputText(updateEmployeeForm("stock"), '_label -> "Stock", 'class -> "form-control")
-    @inputText(updateEmployeeForm("price"), '_label -> "Price", 'class -> "form-control")
+    @inputText(updateEmployeeForm("department name"), '_label -> "Department", 'class -> "form-control")
     
     <label>Image </label>
     <input class = "btn-sm btn-default" type="file" name="upload">
