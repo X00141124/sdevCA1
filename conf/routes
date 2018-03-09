@@ -14,6 +14,9 @@ GET     /delDepartment/:id            controllers.HomeController.deleteDepartmen
 GET     /updateEmployee/:id          controllers.HomeController.updateEmployee(id: Long)
 GET     /updateDepartment/:id         controllers.HomeController.updateDepartment(id:Long)
 
+POST    /updateEmployeeSubmit/:id    controllers.HomeController.updateEmployeeSubmit(id: Long)
+POST    /updateDepartmentSubmit/:id     controllers.HomeController.updateDepartmentSubmit(id: Long)
+
 GET     /employeeDetails/:id         controllers.HomeController.employeeDetails(id:Long)
 
 GET     /login                      controllers.LoginController.login

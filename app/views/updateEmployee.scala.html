@@ -21,7 +21,11 @@
         />@name<br>
     }
     
-    @inputText(updateEmployeeForm("department name"), '_label -> "Department", 'class -> "form-control")
+    @select(
+        updateEmployeeForm("department.id"), 
+        options(Department.options), '_label -> "Department Name", '_default -> "-- Choose a department --", 
+        '_showConstraints -> false, 'class -> "form-control"
+        )
     
     <label>Image </label>
     <input class = "btn-sm btn-default" type="file" name="upload">

@@ -19,6 +19,9 @@ public class Address extends Model{
     @Constraints.Required
     private String eirCode;
 
+    @Constraints.Required
+    private String country;
+
     public Address() {
     }
 
@@ -57,5 +60,13 @@ public class Address extends Model{
 
     public void seteirCode(String eirCode) {
         this.eirCode = eirCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

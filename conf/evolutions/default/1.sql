@@ -7,6 +7,7 @@ create table address (
   id                            bigint auto_increment not null,
   name                          varchar(255),
   eir_code                      varchar(255),
+  country                       varchar(255),
   constraint pk_address primary key (id)
 );
 

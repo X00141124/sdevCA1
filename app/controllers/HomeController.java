@@ -256,7 +256,6 @@ public class HomeController extends Controller {
         catch (Exception ex) {
             return badRequest("error");
         }
-
         return ok(addDepartment.render(departmentForm,User.getUserById(session().get("email"))));
     }
     public Result employeeDetails(Long id) {
@@ -265,6 +264,28 @@ public class HomeController extends Controller {
         employee = Employee.find.byId(id);
             
         return ok(employeeDetails.render(employee,User.getUserById(session().get("email")),e));
+    }
+
+    public Result updateDepartmentSubmit(Long id) {
+        
+        // Retrieve the submitted form object (bind from the HTTP request)
+        Form<Department> updateDepartmentForm = formFactory.form(Department.class).bindFromRequest();
+
+        // Check for errors (based on constraints set in the Department class)
+        if (updateDepartmentForm.hasErrors()) {
+            // Display the form again by returning a bad request
+            return badRequest(updateDepartment.render(id,updateDepartmentForm, User.getUserById(session().get("email"))));
+        } else {
+            // No errors found - extract the employee detail from the form
+            Department d = updateDepartmentForm.get();
+            d.setDeptID(id);
+            d.update();
+
+            flash("success", "Department " + d.getDepName() + " has been updated " + saveImageMsg);
+            
+            // Redirect to the index page
+            return redirect(controllers.routes.HomeController.index(0));
+        }
     }
 
     public Result updateEmployeeSubmit(Long id) {
