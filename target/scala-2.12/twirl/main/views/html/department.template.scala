@@ -48,35 +48,47 @@ Seq[Any](format.raw/*1.62*/("""
           <tr>
             <th>ID</th>
             <th>Department Name</th>
-            <th colspan="2"></th>      
-          </tr>
+            """),_display_(/*19.14*/if(user != null)/*19.30*/{_display_(Seq[Any](format.raw/*19.31*/("""
+              """),_display_(/*20.16*/if(user.getRole() == "admin")/*20.45*/{_display_(Seq[Any](format.raw/*20.46*/("""
+            """),format.raw/*21.13*/("""<th colspan="2"></th>    
+              """)))}),format.raw/*22.16*/("""
+            """)))}),format.raw/*23.14*/("""  
+          """),format.raw/*24.11*/("""</tr>
         </thead>
       
         <tbody>
-          """),_display_(/*24.12*/for(d<-deptList) yield /*24.28*/ {_display_(Seq[Any](format.raw/*24.30*/("""
-            """),format.raw/*25.13*/("""<tr>
-              <td class="numeric">"""),_display_(/*26.36*/d/*26.37*/.getDeptID),format.raw/*26.47*/("""</td>
-              <td>"""),_display_(/*27.20*/d/*27.21*/.getDepName),format.raw/*27.32*/("""</td>
-              <td>
-                <a href=""""),_display_(/*29.27*/routes/*29.33*/.HomeController.updateDepartment(d.getDeptID)),format.raw/*29.78*/("""" class="button-xs btn-danger">
+          """),_display_(/*28.12*/for(d<-deptList) yield /*28.28*/ {_display_(Seq[Any](format.raw/*28.30*/("""
+            """),format.raw/*29.13*/("""<tr>
+              <td class="numeric">"""),_display_(/*30.36*/d/*30.37*/.getId),format.raw/*30.43*/("""</td>
+              <td>"""),_display_(/*31.20*/d/*31.21*/.getName),format.raw/*31.29*/("""</td>
+              """),_display_(/*32.16*/if(user != null)/*32.32*/{_display_(Seq[Any](format.raw/*32.33*/("""
+                """),_display_(/*33.18*/if(user.getRole() == "admin")/*33.47*/{_display_(Seq[Any](format.raw/*33.48*/("""
+              """),format.raw/*34.15*/("""<td>
+                <a href=""""),_display_(/*35.27*/routes/*35.33*/.HomeController.updateDepartment(d.getId)),format.raw/*35.74*/("""" class="button-xs btn-danger">
                   <span class="glyphicon glyphicon-pencil"></span>
                 </a>
               </td>  
               <td>
-                <a href=""""),_display_(/*34.27*/routes/*34.33*/.HomeController.deleteDepartment(d.getDeptID)),format.raw/*34.78*/("""" class="button-xs btn-danger"  onclick="return confirmDel()">
+                <a href=""""),_display_(/*40.27*/routes/*40.33*/.HomeController.deleteDepartment(d.getId)),format.raw/*40.74*/("""" class="button-xs btn-danger"  onclick="return confirmDel()">
                   <span class="glyphicon glyphicon-trash"></span>
                 </a>
               </td>
-            </tr>
-          """)))}),format.raw/*39.12*/("""
-        """),format.raw/*40.9*/("""</tbody>
+            """)))}),format.raw/*44.14*/("""
+          """)))}),format.raw/*45.12*/("""
+            """),format.raw/*46.13*/("""</tr>
+          """)))}),format.raw/*47.12*/("""
+        """),format.raw/*48.9*/("""</tbody>
       
       </table>
-      <p>
-        <a href=""""),_display_(/*44.19*/routes/*44.25*/.HomeController.addDepartment()),format.raw/*44.56*/("""">
+      """),_display_(/*51.8*/if(user != null)/*51.24*/{_display_(Seq[Any](format.raw/*51.25*/("""
+        """),_display_(/*52.10*/if(user.getRole() == "admin")/*52.39*/{_display_(Seq[Any](format.raw/*52.40*/("""
+      """),format.raw/*53.7*/("""<p>
+        <a href=""""),_display_(/*54.19*/routes/*54.25*/.HomeController.addDepartment()),format.raw/*54.56*/("""">
           <button class="btn btn-primary">Add a Department</button>
         </a>
       </p>
+    """)))}),format.raw/*58.6*/("""
+  """)))}),format.raw/*59.4*/("""
 
 """)))}))
       }
@@ -94,11 +106,11 @@ Seq[Any](format.raw/*1.62*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Fri Mar 09 12:56:27 GMT 2018
-                  SOURCE: /home/wdd/webapps/sdevCA/app/views/department.scala.html
-                  HASH: 3e831bdd305854ff5d570f501b13f03f48e6565b
-                  MATRIX: 988->1|1143->61|1171->64|1203->88|1242->90|1274->96|1340->137|1380->169|1419->171|1454->180|1523->223|1536->228|1571->243|1607->252|1649->264|1682->270|1974->535|2006->551|2046->553|2087->566|2154->606|2164->607|2195->617|2247->642|2257->643|2289->654|2367->705|2382->711|2448->756|2662->943|2677->949|2743->994|2973->1193|3009->1202|3095->1261|3110->1267|3162->1298
-                  LINES: 28->1|33->1|35->3|35->3|35->3|37->5|39->7|39->7|39->7|40->8|41->9|41->9|41->9|42->10|43->11|45->13|56->24|56->24|56->24|57->25|58->26|58->26|58->26|59->27|59->27|59->27|61->29|61->29|61->29|66->34|66->34|66->34|71->39|72->40|76->44|76->44|76->44
+                  DATE: Fri Mar 09 21:24:04 GMT 2018
+                  SOURCE: /home/brandon/Documents/sdevCA/app/views/department.scala.html
+                  HASH: fc1276de9178a75037534ff1112aa251c02f9267
+                  MATRIX: 988->1|1143->61|1171->64|1203->88|1242->90|1274->96|1340->137|1380->169|1419->171|1454->180|1523->223|1536->228|1571->243|1607->252|1649->264|1682->270|1880->441|1905->457|1944->458|1987->474|2025->503|2064->504|2105->517|2177->558|2222->572|2263->585|2347->642|2379->658|2419->660|2460->673|2527->713|2537->714|2564->720|2616->745|2626->746|2655->754|2703->775|2728->791|2767->792|2812->810|2850->839|2889->840|2932->855|2990->886|3005->892|3067->933|3281->1120|3296->1126|3358->1167|3572->1350|3615->1362|3656->1375|3704->1392|3740->1401|3804->1439|3829->1455|3868->1456|3905->1466|3943->1495|3982->1496|4016->1503|4065->1525|4080->1531|4132->1562|4262->1662|4296->1666
+                  LINES: 28->1|33->1|35->3|35->3|35->3|37->5|39->7|39->7|39->7|40->8|41->9|41->9|41->9|42->10|43->11|45->13|51->19|51->19|51->19|52->20|52->20|52->20|53->21|54->22|55->23|56->24|60->28|60->28|60->28|61->29|62->30|62->30|62->30|63->31|63->31|63->31|64->32|64->32|64->32|65->33|65->33|65->33|66->34|67->35|67->35|67->35|72->40|72->40|72->40|76->44|77->45|78->46|79->47|80->48|83->51|83->51|83->51|84->52|84->52|84->52|85->53|86->54|86->54|86->54|90->58|91->59
                   -- GENERATED --
               */
           

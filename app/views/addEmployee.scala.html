@@ -1,4 +1,4 @@
-@(employeeForm: Form[models.Employee], user: models.users.User)
+@(employeeForm: Form[models.Employee], addressForm: Form[models.Address], user: models.users.User)
 @import helper._
 
 @main("Add Employee",user) {
@@ -11,19 +11,25 @@
         @CSRF.formField
 
         @inputText(employeeForm("name"), '_label -> "Name", 'class -> "form-control")
+        <label>Projects</label><br>
         @for((value, name) <- Project.options) {
             <input type="checkbox" name="proSelect[]" value="@value"
 
-            />@name<br>
+            /> @name<br>
         }
+        <br>
         @select(
         employeeForm("department.id"), 
         options(Department.options), '_label -> "Department Name", '_default -> "-- Choose a department --", 
         '_showConstraints -> false, 'class -> "form-control"
         )
         
-        @inputText(employeeForm("address"), '_label -> "Address", 'class -> "form-control") 
+        @inputText(addressForm("street"), '_label -> "Address", 'class -> "form-control")
+        @inputText(addressForm("eirCode"), '_label -> "Eircode", 'class -> "form-control")
+        @inputText(addressForm("country"), '_label -> "Country", 'class -> "form-control")
+
         @inputText(employeeForm("id"), '_label -> "", 'hidden -> "hidden")
+        @inputText(addressForm("id"), '_label -> "", 'hidden -> "hidden")
         
         <label>Image Upload</label>
         <input class="btn-sm btn-default" type="file" name="upload">

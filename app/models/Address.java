@@ -12,24 +12,24 @@ public class Address extends Model{
     @Id
     private Long id;
 
-    @Constraints.Required
-    private String name;
+    private String street;
 
-
-    @Constraints.Required
     private String eirCode;
 
-    @Constraints.Required
     private String country;
+
+    // private Employee employee;
 
     public Address() {
     }
 
-    public Address(Long id, String name, String eirCode) {
+    public Address(Long id, String street, String eirCode, String country) {
         this.id = id;
-        this.name = name;
+        this.street = street;
         this.eirCode = eirCode;
+        this.country = country;
     }
+    
 
     public static final Finder<Long, Address> find = new Finder<>(Address.class);
 
@@ -42,8 +42,8 @@ public class Address extends Model{
         return this.id;
     }
 
-    public String getName() {
-        return this.name;
+    public String getStreet() {
+        return this.street;
     }
     
     public String getEirCode() {
@@ -54,11 +54,11 @@ public class Address extends Model{
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
-    public void seteirCode(String eirCode) {
+    public void setEirCode(String eirCode) {
         this.eirCode = eirCode;
     }
 
@@ -68,5 +68,24 @@ public class Address extends Model{
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    // public void setEmployee(Employee employee){
+    //     this.employee=employee;
+    //     employee.setAddress(this);
+    // }
+    // public Employee getEmployee() {
+    //     return this.employee;
+    // }
+
+
+    public static Map<String, String> options() {
+        LinkedHashMap<String, String> options = new LinkedHashMap();
+
+        for (Address a: Address.findAll()) {
+            options.put(a.getId().toString(), a.getStreet());
+        }
+        
+        return options;
     }
 }

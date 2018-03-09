@@ -63,31 +63,36 @@ public class HomeController extends Controller {
     @With(AuthAdmin.class)
     public Result addEmployee() {
         Form<Employee> employeeForm = formFactory.form(Employee.class);
-        return ok(addEmployee.render(employeeForm, User.getUserById(session().get("email"))));
+        Form<Address> addressForm = formFactory.form(Address.class);
+        return ok(addEmployee.render(employeeForm, addressForm, User.getUserById(session().get("email"))));
     }
     public Result addEmployeeSubmit() {
         Employee newEmployee;
         Form<Employee> newEmployeeForm = formFactory.form(Employee.class).bindFromRequest();
 
-        if (newEmployeeForm.hasErrors()) {
-            return badRequest(addEmployee.render(newEmployeeForm, User.getUserById(session().get("email"))));
-        } 
+        Address newAddress;
+        Form<Address> newAddressForm = formFactory.form(Address.class).bindFromRequest();
+
+        if (newEmployeeForm.hasErrors() || newAddressForm.hasErrors()){
+            return badRequest(addEmployee.render(newEmployeeForm, newAddressForm, User.getUserById(session().get("email"))));
+        }
         else {
+            newAddress = newAddressForm.get();
             newEmployee = newEmployeeForm.get();
 
             if (newEmployee.getId() == null) {
-
+                newAddress.save();
                 newEmployee.save();
 
                 for (Long proj : newEmployee.getProSelect()) {
-                    newEmployee.projects.add(Project.find.byId(proj));
+                    newEmployee.getProjects().add(Project.find.byId(proj));
                 }
-            newEmployee.update();
-
+                newEmployee.setAddress(newAddress);
+                newEmployee.update();
+                
             flash("success", "Employee " + newEmployee.getName() + " was updated");
         }
-    }
-
+        }
 
 
         MultipartFormData data = request().body().asMultipartFormData();
@@ -118,14 +123,14 @@ public class HomeController extends Controller {
         else {
             Department newDepartment = newDepartmentForm.get();
             
-            if (newDepartment.getDeptID() == null) {
+            if (newDepartment.getId() == null) {
                 newDepartment.save();
-                flash("success", "Department " + newDepartment.getDepName() + " was added");                
+                flash("success", "Department " + newDepartment.getName() + " was added");                
             }
 
             else {
                 newDepartment.update();
-                flash("success", "Department " + newDepartment.getDepName() + " was updated");                
+                flash("success", "Department " + newDepartment.getName() + " was updated");                
             }
 
             return redirect(controllers.routes.HomeController.department());
@@ -136,6 +141,7 @@ public class HomeController extends Controller {
     @With(AuthAdmin.class)
     @Transactional
     public Result deleteEmployee(Long id) {
+        // Employee.find.ref(id).getAddress().delete();
         Employee.find.ref(id).delete();
 
         flash("success", "Employee has been deleted");
@@ -153,17 +159,21 @@ public class HomeController extends Controller {
     @With(AuthAdmin.class)
     @Transactional
     public Result updateEmployee(Long id) {
+        Address a;
+        Form<Address> addressForm;
         Employee e;
         Form<Employee> employeeForm;
 
         try {
+            a = Employee.find.byId(id).getAddress();
             e = Employee.find.byId(id);
             employeeForm = formFactory.form(Employee.class).fill(e);
+            addressForm = formFactory.form(Address.class).fill(a);
         } 
         catch (Exception ex) {
             return badRequest("error");
         }
-        return ok(updateEmployee.render(id, employeeForm,User.getUserById(session().get("email"))));
+        return ok(updateEmployee.render(id, employeeForm, addressForm, User.getUserById(session().get("email"))));
     }
     public String saveFile(Long id, FilePart<File> uploaded) {
         // make sure that the file exists
@@ -278,10 +288,10 @@ public class HomeController extends Controller {
         } else {
             // No errors found - extract the employee detail from the form
             Department d = updateDepartmentForm.get();
-            d.setDeptID(id);
+            d.setId(id);
             d.update();
 
-            flash("success", "Department " + d.getDepName() + " has been updated " + saveImageMsg);
+            flash("success", "Department " + d.getName() + " has been updated ");
             
             // Redirect to the index page
             return redirect(controllers.routes.HomeController.index(0));
@@ -291,16 +301,19 @@ public class HomeController extends Controller {
     public Result updateEmployeeSubmit(Long id) {
         
         // Retrieve the submitted form object (bind from the HTTP request)
+        Form<Address> updateAddressForm = formFactory.form(Address.class).bindFromRequest();
         Form<Employee> updateEmployeeForm = formFactory.form(Employee.class).bindFromRequest();
 
         // Check for errors (based on constraints set in the Employee class)
-        if (updateEmployeeForm.hasErrors()) {
+        if (updateEmployeeForm.hasErrors() || updateAddressForm.hasErrors()) {
             // Display the form again by returning a bad request
-            return badRequest(updateEmployee.render(id,updateEmployeeForm, User.getUserById(session().get("email"))));
+            return badRequest(updateEmployee.render(id,updateEmployeeForm, updateAddressForm, User.getUserById(session().get("email"))));
         } else {
             // No errors found - extract the employee detail from the form
             Employee e = updateEmployeeForm.get();
+            Address a = updateAddressForm.get();
             e.setId(id);
+            a.setId(Employee.find.byId(id).getAddress().getId());
             
             List<Project> newProjs = new ArrayList<Project>();
             for (Long proj : e.getProSelect()) {
@@ -309,6 +322,7 @@ public class HomeController extends Controller {
             e.projects = newProjs;
             
             //update (save) this employee
+            a.update();
             e.update();
 
             MultipartFormData data = request().body().asMultipartFormData();

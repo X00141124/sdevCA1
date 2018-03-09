@@ -1,7 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/views/updateDepartment.scala.html:13:9: not found: value updateDepartmentForm[0m
-[0m[[0m[31merror[0m] [0m[0m        updateDepartmentForm("employee.id"),[0m
-[0m[[0m[31merror[0m] [0m[0m        ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/wdd/webapps/sdevCA/app/views/updateDepartment.scala.html:14:26: value options is not a member of object models.Employee[0m
-[0m[[0m[31merror[0m] [0m[0m        options(Employee.options),[0m
-[0m[[0m[31merror[0m] [0m[0m                         ^[0m
-[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/brandon/Documents/sdevCA/app/views/index.scala.html:71:14: value =! is not a member of models.users.User[0m
+[0m[[0m[31merror[0m] [0m[0m    @if(user =! null){[0m
+[0m[[0m[31merror[0m] [0m[0m             ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

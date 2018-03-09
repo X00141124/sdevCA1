@@ -8,61 +8,63 @@ import play.data.format.*;
 import play.data.validation.*;
 
 @Entity
-public class Department extends Model{
-
+public class Department extends Model {
     @Id
     private Long id;
+    
     @Constraints.Required
-    private String depName;   
- 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Employee> elist = new ArrayList<>();
+    private String name;
+
+    @OneToMany
+    private List<Employee> employees;
 
     public Department() {
     }
 
-    public Department(Long id, String deptName) {
+    public Department(Long id, String name, List<Employee> employees) {
         this.id = id;
-        this.depName = deptName;
+        this.name = name;
+        this.employees = employees;
     }
 
-    public static final Finder<Long, Department> find = new Finder<>(Department.class);
-
-    public static final List<Department> findAll() {
-        return Department.find.all();
+    public Long getId() {
+        return this.id;
     }
 
-    public String getDepName() {
-        return depName;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setDeptName(String depName) {
-        this.depName = depName;
+    public String getName() {
+        return this.name;
     }
 
-    public Long getDeptID() {
-        return id;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setDeptID(Long deptID) {
-        this.id = deptID;
+    public List<Employee> getEmployees() {
+        return employees;
     }
 
-    public List<Employee> getElist() {
-        return elist;
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
-    public void setElist(List<Employee> elist) {
-        this.elist = elist;
+    public static Finder<Long, Department> find = new Finder<Long, Department>(Department.class);
+
+    public static List<Department> findAll() {
+        return Department.find.query().where().orderBy("name asc").findList();
     }
 
     public static Map<String, String> options() {
         LinkedHashMap<String, String> options = new LinkedHashMap();
 
-        for (Department d: Department.findAll()) {
-            options.put(d.getDeptID().toString(), d.getDepName());
+        for (Department a: Department.findAll()) {
+            options.put(a.getId().toString(), a.getName());
         }
         
         return options;
     }
+
 }

@@ -21,10 +21,9 @@ public class Project extends Model {
     public Project() {
     }
 
-    public Project(Long id, String name, List<Employee> employees) {
+    public Project(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.employees = employees;
     }
 
     public Long getId() {

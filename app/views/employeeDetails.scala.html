@@ -1,8 +1,8 @@
 @(e: models.Employee,user: models.users.User,env: play.api.Environment)
 
 @main("Full Image", user) {
-
-  <div class="col-sm-10">
+<div class="col-sm-2"></div>
+  <div class="col-sm-8">
     <table class="table table-bordered table-hover table-condensed">
       @if(flash.containsKey("success")) {
         <div class="alert alert-success">
@@ -28,11 +28,11 @@
             } else {
                 <td><img src="/assets/images/employeeImages/noImage.jpg"/></td>
             }
-            <td class="numeric">@e.getId</td>
-            <td class="String">@e.getName</td>
-            <td class="String">@e.getAddress.getName</td>
-            <td class="String">@e.getAddress.getEirCode</td>
-            <td class="String">@e.getAddress.getCountry</td>
+            <td class="numeric">@e.getId()</td>
+            <td class="String">@e.getName()</td>
+            <td class="String">@e.getAddress().getStreet()</td>
+            <td class="String">@e.getAddress().getEirCode()</td>
+            <td class="String">@e.getAddress().getCountry()</td>
             
           </tr>
         

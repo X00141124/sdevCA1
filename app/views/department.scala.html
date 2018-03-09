@@ -16,34 +16,46 @@
           <tr>
             <th>ID</th>
             <th>Department Name</th>
-            <th colspan="2"></th>      
+            @if(user != null){
+              @if(user.getRole() == "admin"){
+            <th colspan="2"></th>    
+              }
+            }  
           </tr>
         </thead>
       
         <tbody>
           @for(d<-deptList) {
             <tr>
-              <td class="numeric">@d.getDeptID</td>
-              <td>@d.getDepName</td>
+              <td class="numeric">@d.getId</td>
+              <td>@d.getName</td>
+              @if(user != null){
+                @if(user.getRole() == "admin"){
               <td>
-                <a href="@routes.HomeController.updateDepartment(d.getDeptID)" class="button-xs btn-danger">
+                <a href="@routes.HomeController.updateDepartment(d.getId)" class="button-xs btn-danger">
                   <span class="glyphicon glyphicon-pencil"></span>
                 </a>
               </td>  
               <td>
-                <a href="@routes.HomeController.deleteDepartment(d.getDeptID)" class="button-xs btn-danger"  onclick="return confirmDel()">
+                <a href="@routes.HomeController.deleteDepartment(d.getId)" class="button-xs btn-danger"  onclick="return confirmDel()">
                   <span class="glyphicon glyphicon-trash"></span>
                 </a>
               </td>
+            }
+          }
             </tr>
           }
         </tbody>
       
       </table>
+      @if(user != null){
+        @if(user.getRole() == "admin"){
       <p>
         <a href="@routes.HomeController.addDepartment()">
           <button class="btn btn-primary">Add a Department</button>
         </a>
       </p>
+    }
+  }
 
 }

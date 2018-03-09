@@ -17,13 +17,13 @@ public class Employee extends Model {
         @ManyToMany(cascade = CascadeType.ALL, mappedBy = "employees")
         public List<Project> projects;
 
-        @Constraints.Required
         private String name;
 
         @OneToOne(cascade = CascadeType.REMOVE)
         private Address address;
 
-        @ManyToOne(cascade = CascadeType.ALL)
+        @Constraints.Required
+        @ManyToOne
         private Department department;
 
         //private List<Project> pList = new ArrayList<>();
@@ -42,10 +42,11 @@ public class Employee extends Model {
         }
     
         // Constructor to initialise object
-        public Employee(Long id, String name, Address add) {
+
+        public Employee(Long id, String name, Department department) {
             this.id = id;
             this.name = name;
-            this.address = add;
+            this.department = department;
         }
     
         // Accessor methods
@@ -81,6 +82,13 @@ public class Employee extends Model {
         }
         public void setDepartment(Department department) {
             this.department = department;
+        }
+
+        public void setProjects(List<Project> projects){
+            this.projects=projects;
+        }
+        public List<Project> getProjects() {
+            return this.projects;
         }
     }
     

@@ -33,8 +33,8 @@ object employeeDetails extends _root_.play.twirl.api.BaseScalaTemplate[play.twir
 Seq[Any](format.raw/*1.72*/("""
 
 """),_display_(/*3.2*/main("Full Image", user)/*3.26*/ {_display_(Seq[Any](format.raw/*3.28*/("""
-
-  """),format.raw/*5.3*/("""<div class="col-sm-10">
+"""),format.raw/*4.1*/("""<div class="col-sm-2"></div>
+  <div class="col-sm-8">
     <table class="table table-bordered table-hover table-condensed">
       """),_display_(/*7.8*/if(flash.containsKey("success"))/*7.40*/ {_display_(Seq[Any](format.raw/*7.42*/("""
         """),format.raw/*8.9*/("""<div class="alert alert-success">
@@ -60,11 +60,11 @@ Seq[Any](format.raw/*1.72*/("""
             """)))}/*28.15*/else/*28.20*/{_display_(Seq[Any](format.raw/*28.21*/("""
                 """),format.raw/*29.17*/("""<td><img src="/assets/images/employeeImages/noImage.jpg"/></td>
             """)))}),format.raw/*30.14*/("""
-            """),format.raw/*31.13*/("""<td class="numeric">"""),_display_(/*31.34*/e/*31.35*/.getId),format.raw/*31.41*/("""</td>
-            <td class="String">"""),_display_(/*32.33*/e/*32.34*/.getName),format.raw/*32.42*/("""</td>
-            <td class="String">"""),_display_(/*33.33*/e/*33.34*/.getAddress.getName),format.raw/*33.53*/("""</td>
-            <td class="String">"""),_display_(/*34.33*/e/*34.34*/.getAddress.getEirCode),format.raw/*34.56*/("""</td>
-            <td class="String">"""),_display_(/*35.33*/e/*35.34*/.getAddress.getCountry),format.raw/*35.56*/("""</td>
+            """),format.raw/*31.13*/("""<td class="numeric">"""),_display_(/*31.34*/e/*31.35*/.getId()),format.raw/*31.43*/("""</td>
+            <td class="String">"""),_display_(/*32.33*/e/*32.34*/.getName()),format.raw/*32.44*/("""</td>
+            <td class="String">"""),_display_(/*33.33*/e/*33.34*/.getAddress().getStreet()),format.raw/*33.59*/("""</td>
+            <td class="String">"""),_display_(/*34.33*/e/*34.34*/.getAddress().getEirCode()),format.raw/*34.60*/("""</td>
+            <td class="String">"""),_display_(/*35.33*/e/*35.34*/.getAddress().getCountry()),format.raw/*35.60*/("""</td>
             
           </tr>
         
@@ -92,11 +92,11 @@ Seq[Any](format.raw/*1.72*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Fri Mar 09 12:56:27 GMT 2018
-                  SOURCE: /home/wdd/webapps/sdevCA/app/views/employeeDetails.scala.html
-                  HASH: 78d56f7709fc18639948f8d479b3c19ba38668cf
-                  MATRIX: 1006->1|1171->71|1199->74|1231->98|1270->100|1300->104|1425->204|1465->236|1504->238|1539->247|1610->292|1623->297|1658->312|1694->321|1738->335|1772->342|2050->593|2137->671|2177->673|2222->690|2294->735|2333->753|2374->776|2387->781|2426->782|2471->799|2579->876|2620->889|2668->910|2678->911|2705->917|2770->955|2780->956|2809->964|2874->1002|2884->1003|2924->1022|2989->1060|2999->1061|3042->1083|3107->1121|3117->1122|3160->1144|3286->1240
-                  LINES: 28->1|33->1|35->3|35->3|35->3|37->5|39->7|39->7|39->7|40->8|41->9|41->9|41->9|42->10|43->11|44->12|58->26|58->26|58->26|59->27|59->27|59->27|60->28|60->28|60->28|61->29|62->30|63->31|63->31|63->31|63->31|64->32|64->32|64->32|65->33|65->33|65->33|66->34|66->34|66->34|67->35|67->35|67->35|78->46
+                  DATE: Fri Mar 09 20:27:02 GMT 2018
+                  SOURCE: /home/brandon/Documents/sdevCA/app/views/employeeDetails.scala.html
+                  HASH: 11607d04f8fc9279165964c99e5755a28e3a5044
+                  MATRIX: 1006->1|1171->71|1199->74|1231->98|1270->100|1297->101|1452->231|1492->263|1531->265|1566->274|1637->319|1650->324|1685->339|1721->348|1765->362|1799->369|2077->620|2164->698|2204->700|2249->717|2321->762|2360->780|2401->803|2414->808|2453->809|2498->826|2606->903|2647->916|2695->937|2705->938|2734->946|2799->984|2809->985|2840->995|2905->1033|2915->1034|2961->1059|3026->1097|3036->1098|3083->1124|3148->1162|3158->1163|3205->1189|3331->1285
+                  LINES: 28->1|33->1|35->3|35->3|35->3|36->4|39->7|39->7|39->7|40->8|41->9|41->9|41->9|42->10|43->11|44->12|58->26|58->26|58->26|59->27|59->27|59->27|60->28|60->28|60->28|61->29|62->30|63->31|63->31|63->31|63->31|64->32|64->32|64->32|65->33|65->33|65->33|66->34|66->34|66->34|67->35|67->35|67->35|78->46
                   -- GENERATED --
               */
           

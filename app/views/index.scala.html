@@ -29,7 +29,11 @@
           <th>ID</th>
           <th>Name</th>
           <th>Department Name</th>
+          @if(user != null){
+            @if(user.getRole() == "admin"){
           <th colspan="2"></th>      
+            }
+          }
         </tr>
       </thead>
 
@@ -45,28 +49,38 @@
             <td><a href="@routes.HomeController.employeeDetails(e.getId)">
               @e.getName</td>  
             </a>      
-            <td class="String">@e.getDepartment.getDepName</td>
-            <td>
-              <a href="@routes.HomeController.updateEmployee(e.getId)" class="button xs btn-danger">
-                <span class="glyphicon glyphicon-pencil"></span>
-              </a>
-            </td> 
-                   <td>
-              <a href="@routes.HomeController.deleteEmployee(e.getId)" class="button xs btn-danger" onclick="return confirmDel();">
-                <span class="glyphicon glyphicon-trash"></span>
-              </a>
-            </td>
+            <td class="String">@e.getDepartment.getName</td>
+            @if(user != null){
+              @if(user.getRole() == "admin"){
+
+                <td>
+                    <a href="@routes.HomeController.updateEmployee(e.getId)" class="button xs btn-danger">
+                      <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                  </td> 
+                         <td>
+                    <a href="@routes.HomeController.deleteEmployee(e.getId)" class="button xs btn-danger" onclick="return confirmDel();">
+                      <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                  </td>
+
+              }
+            }
+            
           </tr>
         }
       </tbody>
 
     </table>
-
+    @if(user != null){
+      @if(user.getRole() == "admin"){
     <p>
       <a href="@routes.HomeController.addEmployee()">
         <button class="btn btn-primary">Add a employee</button>
       </a>
     </p>
+  }
+}
   </div>
 </div>
 }

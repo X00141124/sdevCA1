@@ -61,47 +61,61 @@ Seq[Any](format.raw/*1.119*/("""
           <th>ID</th>
           <th>Name</th>
           <th>Department Name</th>
-          <th colspan="2"></th>      
-        </tr>
+          """),_display_(/*32.12*/if(user != null)/*32.28*/{_display_(Seq[Any](format.raw/*32.29*/("""
+            """),_display_(/*33.14*/if(user.getRole() == "admin")/*33.43*/{_display_(Seq[Any](format.raw/*33.44*/("""
+          """),format.raw/*34.11*/("""<th colspan="2"></th>      
+            """)))}),format.raw/*35.14*/("""
+          """)))}),format.raw/*36.12*/("""
+        """),format.raw/*37.9*/("""</tr>
       </thead>
 
       <tbody>
-        """),_display_(/*37.10*/for(e<-employees) yield /*37.27*/ {_display_(Seq[Any](format.raw/*37.29*/("""
-          """),format.raw/*38.11*/("""<tr>
-              """),_display_(/*39.16*/if(env.resource("public/images/employeeImages/thumbnails/" + e.getId + ".jpg").isDefined)/*39.105*/ {_display_(Seq[Any](format.raw/*39.107*/("""
-                """),format.raw/*40.17*/("""<td><img src="/assets/images/employeeImages/thumbnails/"""),_display_(/*40.73*/(e.getId + ".jpg")),format.raw/*40.91*/(""""/></td>
-            """)))}/*41.15*/else/*41.20*/{_display_(Seq[Any](format.raw/*41.21*/("""
-                """),format.raw/*42.17*/("""<td><img src="/assets/images/employeeImages/thumbnails/noImage.jpg"/></td>
-            """)))}),format.raw/*43.14*/("""
-            """),format.raw/*44.13*/("""<td class="numeric">"""),_display_(/*44.34*/e/*44.35*/.getId),format.raw/*44.41*/("""</td>
-            <td><a href=""""),_display_(/*45.27*/routes/*45.33*/.HomeController.employeeDetails(e.getId)),format.raw/*45.73*/("""">
-              """),_display_(/*46.16*/e/*46.17*/.getName),format.raw/*46.25*/("""</td>  
+        """),_display_(/*41.10*/for(e<-employees) yield /*41.27*/ {_display_(Seq[Any](format.raw/*41.29*/("""
+          """),format.raw/*42.11*/("""<tr>
+              """),_display_(/*43.16*/if(env.resource("public/images/employeeImages/thumbnails/" + e.getId + ".jpg").isDefined)/*43.105*/ {_display_(Seq[Any](format.raw/*43.107*/("""
+                """),format.raw/*44.17*/("""<td><img src="/assets/images/employeeImages/thumbnails/"""),_display_(/*44.73*/(e.getId + ".jpg")),format.raw/*44.91*/(""""/></td>
+            """)))}/*45.15*/else/*45.20*/{_display_(Seq[Any](format.raw/*45.21*/("""
+                """),format.raw/*46.17*/("""<td><img src="/assets/images/employeeImages/thumbnails/noImage.jpg"/></td>
+            """)))}),format.raw/*47.14*/("""
+            """),format.raw/*48.13*/("""<td class="numeric">"""),_display_(/*48.34*/e/*48.35*/.getId),format.raw/*48.41*/("""</td>
+            <td><a href=""""),_display_(/*49.27*/routes/*49.33*/.HomeController.employeeDetails(e.getId)),format.raw/*49.73*/("""">
+              """),_display_(/*50.16*/e/*50.17*/.getName),format.raw/*50.25*/("""</td>  
             </a>      
-            <td class="String">"""),_display_(/*48.33*/e/*48.34*/.getDepartment.getDepName),format.raw/*48.59*/("""</td>
-            <td>
-              <a href=""""),_display_(/*50.25*/routes/*50.31*/.HomeController.updateEmployee(e.getId)),format.raw/*50.70*/("""" class="button xs btn-danger">
-                <span class="glyphicon glyphicon-pencil"></span>
-              </a>
-            </td> 
-                   <td>
-              <a href=""""),_display_(/*55.25*/routes/*55.31*/.HomeController.deleteEmployee(e.getId)),format.raw/*55.70*/("""" class="button xs btn-danger" onclick="return confirmDel();">
-                <span class="glyphicon glyphicon-trash"></span>
-              </a>
-            </td>
-          </tr>
-        """)))}),format.raw/*60.10*/("""
-      """),format.raw/*61.7*/("""</tbody>
+            <td class="String">"""),_display_(/*52.33*/e/*52.34*/.getDepartment.getName),format.raw/*52.56*/("""</td>
+            """),_display_(/*53.14*/if(user != null)/*53.30*/{_display_(Seq[Any](format.raw/*53.31*/("""
+              """),_display_(/*54.16*/if(user.getRole() == "admin")/*54.45*/{_display_(Seq[Any](format.raw/*54.46*/("""
+
+                """),format.raw/*56.17*/("""<td>
+                    <a href=""""),_display_(/*57.31*/routes/*57.37*/.HomeController.updateEmployee(e.getId)),format.raw/*57.76*/("""" class="button xs btn-danger">
+                      <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                  </td> 
+                         <td>
+                    <a href=""""),_display_(/*62.31*/routes/*62.37*/.HomeController.deleteEmployee(e.getId)),format.raw/*62.76*/("""" class="button xs btn-danger" onclick="return confirmDel();">
+                      <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                  </td>
+
+              """)))}),format.raw/*67.16*/("""
+            """)))}),format.raw/*68.14*/("""
+            
+          """),format.raw/*70.11*/("""</tr>
+        """)))}),format.raw/*71.10*/("""
+      """),format.raw/*72.7*/("""</tbody>
 
     </table>
-
-    <p>
-      <a href=""""),_display_(/*66.17*/routes/*66.23*/.HomeController.addEmployee()),format.raw/*66.52*/("""">
+    """),_display_(/*75.6*/if(user != null)/*75.22*/{_display_(Seq[Any](format.raw/*75.23*/("""
+      """),_display_(/*76.8*/if(user.getRole() == "admin")/*76.37*/{_display_(Seq[Any](format.raw/*76.38*/("""
+    """),format.raw/*77.5*/("""<p>
+      <a href=""""),_display_(/*78.17*/routes/*78.23*/.HomeController.addEmployee()),format.raw/*78.52*/("""">
         <button class="btn btn-primary">Add a employee</button>
       </a>
     </p>
-  </div>
+  """)))}),format.raw/*82.4*/("""
+""")))}),format.raw/*83.2*/("""
+  """),format.raw/*84.3*/("""</div>
 </div>
-""")))}),format.raw/*72.2*/("""
+""")))}),format.raw/*86.2*/("""
 """))
       }
     }
@@ -118,11 +132,11 @@ Seq[Any](format.raw/*1.119*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Fri Mar 09 12:56:27 GMT 2018
-                  SOURCE: /home/wdd/webapps/sdevCA/app/views/index.scala.html
-                  HASH: 10effd17fc2aaccb9aa06c9536f368c2a61ce8d0
-                  MATRIX: 1023->1|1236->118|1264->121|1294->143|1333->145|1361->147|1531->290|1546->296|1591->320|1667->370|1701->388|1741->390|1777->399|1814->409|1829->415|1880->445|1934->472|1944->473|1973->481|2012->492|2060->513|2070->514|2111->534|2169->562|2201->567|2345->685|2386->717|2426->719|2462->728|2534->773|2548->778|2584->793|2620->802|2664->816|2698->823|2943->1041|2976->1058|3016->1060|3055->1071|3102->1091|3201->1180|3242->1182|3287->1199|3370->1255|3409->1273|3450->1296|3463->1301|3502->1302|3547->1319|3666->1407|3707->1420|3755->1441|3765->1442|3792->1448|3851->1480|3866->1486|3927->1526|3972->1544|3982->1545|4011->1553|4101->1616|4111->1617|4157->1642|4231->1689|4246->1695|4306->1734|4516->1917|4531->1923|4591->1962|4811->2151|4845->2158|4920->2206|4935->2212|4985->2241|5119->2345
-                  LINES: 28->1|33->1|35->3|35->3|35->3|37->5|43->11|43->11|43->11|44->12|44->12|44->12|45->13|45->13|45->13|45->13|45->13|45->13|45->13|46->14|46->14|46->14|46->14|48->16|49->17|53->21|53->21|53->21|54->22|55->23|55->23|55->23|56->24|57->25|58->26|69->37|69->37|69->37|70->38|71->39|71->39|71->39|72->40|72->40|72->40|73->41|73->41|73->41|74->42|75->43|76->44|76->44|76->44|76->44|77->45|77->45|77->45|78->46|78->46|78->46|80->48|80->48|80->48|82->50|82->50|82->50|87->55|87->55|87->55|92->60|93->61|98->66|98->66|98->66|104->72
+                  DATE: Fri Mar 09 21:24:36 GMT 2018
+                  SOURCE: /home/brandon/Documents/sdevCA/app/views/index.scala.html
+                  HASH: a7d3b5bdbd64bb62bc4d619533c1661e8bcc2c71
+                  MATRIX: 1023->1|1236->118|1264->121|1294->143|1333->145|1361->147|1531->290|1546->296|1591->320|1667->370|1701->388|1741->390|1777->399|1814->409|1829->415|1880->445|1934->472|1944->473|1973->481|2012->492|2060->513|2070->514|2111->534|2169->562|2201->567|2345->685|2386->717|2426->719|2462->728|2534->773|2548->778|2584->793|2620->802|2664->816|2698->823|2863->961|2888->977|2927->978|2968->992|3006->1021|3045->1022|3084->1033|3156->1074|3199->1086|3235->1095|3307->1140|3340->1157|3380->1159|3419->1170|3466->1190|3565->1279|3606->1281|3651->1298|3734->1354|3773->1372|3814->1395|3827->1400|3866->1401|3911->1418|4030->1506|4071->1519|4119->1540|4129->1541|4156->1547|4215->1579|4230->1585|4291->1625|4336->1643|4346->1644|4375->1652|4465->1715|4475->1716|4518->1738|4564->1757|4589->1773|4628->1774|4671->1790|4709->1819|4748->1820|4794->1838|4856->1873|4871->1879|4931->1918|5171->2131|5186->2137|5246->2176|5475->2374|5520->2388|5572->2412|5618->2427|5652->2434|5706->2462|5731->2478|5770->2479|5804->2487|5842->2516|5881->2517|5913->2522|5960->2542|5975->2548|6025->2577|6145->2667|6177->2669|6207->2672|6252->2687
+                  LINES: 28->1|33->1|35->3|35->3|35->3|37->5|43->11|43->11|43->11|44->12|44->12|44->12|45->13|45->13|45->13|45->13|45->13|45->13|45->13|46->14|46->14|46->14|46->14|48->16|49->17|53->21|53->21|53->21|54->22|55->23|55->23|55->23|56->24|57->25|58->26|64->32|64->32|64->32|65->33|65->33|65->33|66->34|67->35|68->36|69->37|73->41|73->41|73->41|74->42|75->43|75->43|75->43|76->44|76->44|76->44|77->45|77->45|77->45|78->46|79->47|80->48|80->48|80->48|80->48|81->49|81->49|81->49|82->50|82->50|82->50|84->52|84->52|84->52|85->53|85->53|85->53|86->54|86->54|86->54|88->56|89->57|89->57|89->57|94->62|94->62|94->62|99->67|100->68|102->70|103->71|104->72|107->75|107->75|107->75|108->76|108->76|108->76|109->77|110->78|110->78|110->78|114->82|115->83|116->84|118->86
                   -- GENERATED --
               */
           

@@ -1,4 +1,4 @@
-@(id: Long, updateAddressForm: Form[models.Department], user: models.users.User)
+@(id: Long, updateDepartmentForm: Form[models.Department], user: models.users.User)
 @import helper._
 @main("Update Department", user){
 <p class="lead"> Update Department</p>
@@ -8,13 +8,8 @@
     @* CSRF attack prevention *@
     @CSRF.formField
 
-    @inputText(updateAddressForm("department"), '_label -> "Department", 'class -> "form-control")
-    @select(
-        updateDepartmentForm("employee.id"),
-        options(Employee.options),
-        '_label -> "Employee", '_default -> "-- Choose a employee --",
-        '_showConstraints -> false, 'class -> "form-control"
-    )   
+    @inputText(updateDepartmentForm("name"), '_label -> "Name", 'class -> "form_control")
+
     <div class="actions">
         <input type="submit" value="Update Department" class="btn btn-primary">
         <a href="@routes.HomeController.department">

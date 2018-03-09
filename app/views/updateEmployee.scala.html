@@ -1,4 +1,4 @@
-@(id: Long, updateEmployeeForm: Form[models.Employee], user: models.users.User)
+@(id: Long, updateEmployeeForm: Form[models.Employee], updateAddressForm: Form[models.Address], user: models.users.User)
 
 @import helper._
 
@@ -11,7 +11,6 @@
     @* CSRF attack prevention *@
     @CSRF.formField
     @inputText(updateEmployeeForm("name"), '_label -> "Name", 'class -> "form-control")
-    @inputText(updateEmployeeForm("address"), '_label -> "Address", 'class -> "form-control")
 
     @for((value, name) <- Project.options) {
         <input type="checkbox" name="proSelect[]" value="@value"
@@ -26,6 +25,10 @@
         options(Department.options), '_label -> "Department Name", '_default -> "-- Choose a department --", 
         '_showConstraints -> false, 'class -> "form-control"
         )
+        
+        @inputText(updateAddressForm("street"), '_label -> "Address", 'class -> "form-control")
+        @inputText(updateAddressForm("eirCode"), '_label -> "Eircode", 'class -> "form-control")
+        @inputText(updateAddressForm("country"), '_label -> "Country", 'class -> "form-control")
     
     <label>Image </label>
     <input class = "btn-sm btn-default" type="file" name="upload">
