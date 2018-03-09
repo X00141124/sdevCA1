@@ -55,4 +55,14 @@ public class Department extends Model{
     public void setElist(List<Employee> elist) {
         this.elist = elist;
     }
+
+    public static Map<String, String> options() {
+        LinkedHashMap<String, String> options = new LinkedHashMap();
+
+        for (Department d: Department.findAll()) {
+            options.put(d.getDeptID().toString(), d.getDepName());
+        }
+        
+        return options;
+    }
 }

@@ -48,21 +48,25 @@ Seq[Any](format.raw/*1.64*/("""
 
             />"""),_display_(/*17.16*/name),format.raw/*17.20*/("""<br>
         """)))}),format.raw/*18.10*/("""
-        """),_display_(/*19.10*/inputText(employeeForm("department name"), '_label -> "department Name", 'class -> "form-control")),format.raw/*19.108*/("""
-        """),_display_(/*20.10*/inputText(employeeForm("address"), '_label -> "Address", 'class -> "form-control")),format.raw/*20.92*/("""
-
-        """),_display_(/*22.10*/inputText(employeeForm("id"), '_label -> "", 'hidden -> "hidden")),format.raw/*22.75*/("""
+        """),_display_(/*19.10*/select(
+        employeeForm("department.id"), 
+        options(Department.options), '_label -> "Department Name", '_default -> "-- Choose a department --", 
+        '_showConstraints -> false, 'class -> "form-control"
+        )),format.raw/*23.10*/("""
         
-        """),format.raw/*24.9*/("""<label>Image Upload</label>
+        """),_display_(/*25.10*/inputText(employeeForm("address"), '_label -> "Address", 'class -> "form-control")),format.raw/*25.92*/(""" 
+        """),_display_(/*26.10*/inputText(employeeForm("id"), '_label -> "", 'hidden -> "hidden")),format.raw/*26.75*/("""
+        
+        """),format.raw/*28.9*/("""<label>Image Upload</label>
         <input class="btn-sm btn-default" type="file" name="upload">
         <br><br>
         <div class="actions">
             <input type="submit" value="Add Employee" class="btn btn-primary">
-            <a href=""""),_display_(/*29.23*/routes/*29.29*/.HomeController.index(0)),format.raw/*29.53*/("""">
+            <a href=""""),_display_(/*33.23*/routes/*33.29*/.HomeController.index(0)),format.raw/*33.53*/("""">
                 <button type="button" class="btn btn-warning">Cancel</button>
             </a>
         </div>
-    """)))}),format.raw/*33.6*/("""
+    """)))}),format.raw/*37.6*/("""
 """)))}))
       }
     }
@@ -79,11 +83,11 @@ Seq[Any](format.raw/*1.64*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Thu Mar 08 17:07:48 GMT 2018
+                  DATE: Fri Mar 09 11:50:27 GMT 2018
                   SOURCE: /home/wdd/webapps/sdevCA/app/views/addEmployee.scala.html
-                  HASH: b046842e3da809be6ed7b757f06ccc069e6d5070
-                  MATRIX: 987->1|1122->65|1167->63|1194->81|1221->83|1254->108|1293->110|1324->115|1393->159|1550->308|1589->310|1626->347|1663->357|1676->361|1707->371|1745->382|1842->458|1879->468|1932->505|1972->507|2013->520|2090->570|2116->575|2161->593|2186->597|2231->611|2268->621|2388->719|2425->729|2528->811|2566->822|2652->887|2697->905|2969->1150|2984->1156|3029->1180|3177->1298
-                  LINES: 28->1|31->2|34->1|35->3|36->4|36->4|36->4|37->5|38->6|41->9|41->9|42->10|43->11|43->11|43->11|45->13|45->13|46->14|46->14|46->14|47->15|47->15|47->15|49->17|49->17|50->18|51->19|51->19|52->20|52->20|54->22|54->22|56->24|61->29|61->29|61->29|65->33
+                  HASH: f9ad6ec82c7ba78022af84ff0932bae7b06dcaa5
+                  MATRIX: 987->1|1122->65|1167->63|1194->81|1221->83|1254->108|1293->110|1324->115|1393->159|1550->308|1589->310|1626->347|1663->357|1676->361|1707->371|1745->382|1842->458|1879->468|1932->505|1972->507|2013->520|2090->570|2116->575|2161->593|2186->597|2231->611|2268->621|2517->849|2563->868|2666->950|2704->961|2790->1026|2835->1044|3107->1289|3122->1295|3167->1319|3315->1437
+                  LINES: 28->1|31->2|34->1|35->3|36->4|36->4|36->4|37->5|38->6|41->9|41->9|42->10|43->11|43->11|43->11|45->13|45->13|46->14|46->14|46->14|47->15|47->15|47->15|49->17|49->17|50->18|51->19|55->23|57->25|57->25|58->26|58->26|60->28|65->33|65->33|65->33|69->37
                   -- GENERATED --
               */
           

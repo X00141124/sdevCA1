@@ -99,6 +99,38 @@ public class HomeController extends Controller {
 
         return redirect(controllers.routes.HomeController.index(0));
     }
+    @Security.Authenticated(Secured.class)
+    @With(AuthAdmin.class)
+    @Transactional
+    public Result addDepartment() {
+        Form<Department> departmentForm = formFactory.form(Department.class);
+        return ok(addDepartment.render(departmentForm,User.getUserById(session().get("email"))));
+    }
+
+    public Result addDepartmentSubmit() {
+        Form<Department> newDepartmentForm = formFactory.form(Department.class).bindFromRequest();
+        
+
+        if (newDepartmentForm.hasErrors()) {
+            return badRequest(addDepartment.render(newDepartmentForm,User.getUserById(session().get("email"))));
+            
+        } 
+        else {
+            Department newDepartment = newDepartmentForm.get();
+            
+            if (newDepartment.getDeptID() == null) {
+                newDepartment.save();
+                flash("success", "Department " + newDepartment.getDepName() + " was added");                
+            }
+
+            else {
+                newDepartment.update();
+                flash("success", "Department " + newDepartment.getDepName() + " was updated");                
+            }
+
+            return redirect(controllers.routes.HomeController.department());
+        }
+    }
     
     @Security.Authenticated(Secured.class)
     @With(AuthAdmin.class)
@@ -110,6 +142,13 @@ public class HomeController extends Controller {
         
         return redirect(routes.HomeController.index(0));
     }
+    public Result deleteDepartment(Long id) {
+        Department.find.ref(id).delete();
+        flash("success", "Department has been deleted");
+
+        return redirect(routes.HomeController.index(0));
+    }
+
     @Security.Authenticated(Secured.class)
     @With(AuthAdmin.class)
     @Transactional
@@ -204,6 +243,28 @@ public class HomeController extends Controller {
             }
         }
         return "";
+    }
+    @Transactional
+    public Result updateDepartment(Long id) {        
+        Department d;
+        Form<Department> departmentForm;
+
+        try {
+            d = Department.find.byId(id);
+            departmentForm = formFactory.form(Department.class).fill(d);
+        }
+        catch (Exception ex) {
+            return badRequest("error");
+        }
+
+        return ok(addDepartment.render(departmentForm,User.getUserById(session().get("email"))));
+    }
+    public Result employeeDetails(Long id) {
+        Employee employee;
+
+        employee = Employee.find.byId(id);
+            
+        return ok(employeeDetails.render(employee,User.getUserById(session().get("email")),e));
     }
 
     public Result updateEmployeeSubmit(Long id) {

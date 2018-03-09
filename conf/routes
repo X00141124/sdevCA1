@@ -4,11 +4,17 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index(cat:Long?=0L)
+GET     /department                  controllers.HomeController.department
 GET     /addEmployee                 controllers.HomeController.addEmployee
 POST    /addEmployeeSubmit           controllers.HomeController.addEmployeeSubmit
+GET     /addDepartment                controllers.HomeController.addDepartment
+POST    /addDepartmentSubmit          controllers.HomeController.addDepartmentSubmit
 GET     /delEmployee/:id             controllers.HomeController.deleteEmployee(id: Long)
+GET     /delDepartment/:id            controllers.HomeController.deleteDepartment(id: Long)
 GET     /updateEmployee/:id          controllers.HomeController.updateEmployee(id: Long)
+GET     /updateDepartment/:id         controllers.HomeController.updateDepartment(id:Long)
 
+GET     /employeeDetails/:id         controllers.HomeController.employeeDetails(id:Long)
 
 GET     /login                      controllers.LoginController.login
 POST    /loginSubmit                controllers.LoginController.loginSubmit

@@ -16,9 +16,13 @@
 
             />@name<br>
         }
-        @inputText(employeeForm("department name"), '_label -> "department Name", 'class -> "form-control")
-        @inputText(employeeForm("address"), '_label -> "Address", 'class -> "form-control")
-
+        @select(
+        employeeForm("department.id"), 
+        options(Department.options), '_label -> "Department Name", '_default -> "-- Choose a department --", 
+        '_showConstraints -> false, 'class -> "form-control"
+        )
+        
+        @inputText(employeeForm("address"), '_label -> "Address", 'class -> "form-control") 
         @inputText(employeeForm("id"), '_label -> "", 'hidden -> "hidden")
         
         <label>Image Upload</label>
