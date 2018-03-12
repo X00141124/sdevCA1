@@ -9,6 +9,7 @@
     <title>List of Employee - @title</title>
     <!-- Bootstrap Core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet" />
+
     <!-- Custom CSS -->
     <link href="@routes.Assets.versioned("stylesheets/main.css")" rel="stylesheet" />
 </head>
@@ -22,29 +23,17 @@
             </div>
 
             <ul class="nav navbar-nav">
-
-                <li @if(title=="Employee" ){class="active"}>
-                    <a href="#">About</a>
-                </li>
-
-                <li>
+                
+                <li class="nav-item">
                     <a href="@routes.HomeController.department">Department</a>
                 </li>
 
-                <li>
-                    <a href="#">Services</a>
-                </li>
-
-                <li>
-                    <a href="#">Contact</a>
-                </li>
                 <li @if(title=="Login"){class="active"}>
                     @if(user != null) {
                         <a href="@routes.LoginController.logout()">Logout @user.getName()</a>
                     } else {
                         <a href="@routes.LoginController.login()">Login</a>
                     }
-
                 </li>
             </ul>
 

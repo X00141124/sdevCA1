@@ -28,6 +28,7 @@
           @for(d<-deptList) {
             <tr>
               <td class="numeric">@d.getId</td>
+            
               <td>@d.getName</td>
               @if(user != null){
                 @if(user.getRole() == "admin"){

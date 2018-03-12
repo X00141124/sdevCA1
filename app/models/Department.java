@@ -54,7 +54,7 @@ public class Department extends Model {
     public static Finder<Long, Department> find = new Finder<Long, Department>(Department.class);
 
     public static List<Department> findAll() {
-        return Department.find.query().where().orderBy("name asc").findList();
+        return Department.find.query().where().orderBy("id asc").findList();
     }
 
     public static Map<String, String> options() {

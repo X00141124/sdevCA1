@@ -1,9 +1,9 @@
 [0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/home/brandon/Documents/sdevCA/conf/logback.xml,/home/brandon/Documents/sdevCA/target/scala-2.12/classes/logback.xml)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/home/brandon/Documents/sdevCA/conf/routes,/home/brandon/Documents/sdevCA/target/scala-2.12/classes/routes)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/home/brandon/Documents/sdevCA/conf/evolutions,/home/brandon/Documents/sdevCA/target/scala-2.12/classes/evolutions)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/home/brandon/Documents/sdevCA/conf/application.conf,/home/brandon/Documents/sdevCA/target/scala-2.12/classes/application.conf)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/home/brandon/Documents/sdevCA/conf/evolutions/default,/home/brandon/Documents/sdevCA/target/scala-2.12/classes/evolutions/default)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/home/brandon/Documents/sdevCA/conf/evolutions/default/2.sql,/home/brandon/Documents/sdevCA/target/scala-2.12/classes/evolutions/default/2.sql)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/home/brandon/Documents/sdevCA/conf/evolutions/default/3.sql,/home/brandon/Documents/sdevCA/target/scala-2.12/classes/evolutions/default/3.sql)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/home/brandon/Documents/sdevCA/conf/evolutions/default/1.sql,/home/brandon/Documents/sdevCA/target/scala-2.12/classes/evolutions/default/1.sql)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/webapps/sdevCA1/conf/evolutions,/home/wdd/webapps/sdevCA1/target/scala-2.12/classes/evolutions)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/webapps/sdevCA1/conf/application.conf,/home/wdd/webapps/sdevCA1/target/scala-2.12/classes/application.conf)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/webapps/sdevCA1/conf/logback.xml,/home/wdd/webapps/sdevCA1/target/scala-2.12/classes/logback.xml)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/webapps/sdevCA1/conf/routes,/home/wdd/webapps/sdevCA1/target/scala-2.12/classes/routes)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/webapps/sdevCA1/conf/evolutions/default,/home/wdd/webapps/sdevCA1/target/scala-2.12/classes/evolutions/default)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/webapps/sdevCA1/conf/evolutions/default/3.sql,/home/wdd/webapps/sdevCA1/target/scala-2.12/classes/evolutions/default/3.sql)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/webapps/sdevCA1/conf/evolutions/default/2.sql,/home/wdd/webapps/sdevCA1/target/scala-2.12/classes/evolutions/default/2.sql)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/webapps/sdevCA1/conf/evolutions/default/1.sql,/home/wdd/webapps/sdevCA1/target/scala-2.12/classes/evolutions/default/1.sql)[0m

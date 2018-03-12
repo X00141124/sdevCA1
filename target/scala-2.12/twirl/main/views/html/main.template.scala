@@ -41,8 +41,9 @@ Seq[Any](format.raw/*1.58*/("""
     <title>List of Employee - """),_display_(/*9.32*/title),format.raw/*9.37*/("""</title>
     <!-- Bootstrap Core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet" />
+
     <!-- Custom CSS -->
-    <link href=""""),_display_(/*13.18*/routes/*13.24*/.Assets.versioned("stylesheets/main.css")),format.raw/*13.65*/("""" rel="stylesheet" />
+    <link href=""""),_display_(/*14.18*/routes/*14.24*/.Assets.versioned("stylesheets/main.css")),format.raw/*14.65*/("""" rel="stylesheet" />
 </head>
 
 <body>
@@ -54,30 +55,18 @@ Seq[Any](format.raw/*1.58*/("""
             </div>
 
             <ul class="nav navbar-nav">
-
-                <li """),_display_(/*26.22*/if(title=="Employee" )/*26.44*/{_display_(Seq[Any](format.raw/*26.45*/("""class="active"""")))}),format.raw/*26.60*/(""">
-                    <a href="#">About</a>
+                
+                <li class="nav-item">
+                    <a href=""""),_display_(/*28.31*/routes/*28.37*/.HomeController.department),format.raw/*28.63*/("""">Department</a>
                 </li>
 
-                <li>
-                    <a href=""""),_display_(/*31.31*/routes/*31.37*/.HomeController.department),format.raw/*31.63*/("""">Department</a>
-                </li>
-
-                <li>
-                    <a href="#">Services</a>
-                </li>
-
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-                <li """),_display_(/*41.22*/if(title=="Login")/*41.40*/{_display_(Seq[Any](format.raw/*41.41*/("""class="active"""")))}),format.raw/*41.56*/(""">
-                    """),_display_(/*42.22*/if(user != null)/*42.38*/ {_display_(Seq[Any](format.raw/*42.40*/("""
-                        """),format.raw/*43.25*/("""<a href=""""),_display_(/*43.35*/routes/*43.41*/.LoginController.logout()),format.raw/*43.66*/("""">Logout """),_display_(/*43.76*/user/*43.80*/.getName()),format.raw/*43.90*/("""</a>
-                    """)))}/*44.23*/else/*44.28*/{_display_(Seq[Any](format.raw/*44.29*/("""
-                        """),format.raw/*45.25*/("""<a href=""""),_display_(/*45.35*/routes/*45.41*/.LoginController.login()),format.raw/*45.65*/("""">Login</a>
-                    """)))}),format.raw/*46.22*/("""
-
-                """),format.raw/*48.17*/("""</li>
+                <li """),_display_(/*31.22*/if(title=="Login")/*31.40*/{_display_(Seq[Any](format.raw/*31.41*/("""class="active"""")))}),format.raw/*31.56*/(""">
+                    """),_display_(/*32.22*/if(user != null)/*32.38*/ {_display_(Seq[Any](format.raw/*32.40*/("""
+                        """),format.raw/*33.25*/("""<a href=""""),_display_(/*33.35*/routes/*33.41*/.LoginController.logout()),format.raw/*33.66*/("""">Logout """),_display_(/*33.76*/user/*33.80*/.getName()),format.raw/*33.90*/("""</a>
+                    """)))}/*34.23*/else/*34.28*/{_display_(Seq[Any](format.raw/*34.29*/("""
+                        """),format.raw/*35.25*/("""<a href=""""),_display_(/*35.35*/routes/*35.41*/.LoginController.login()),format.raw/*35.65*/("""">Login</a>
+                    """)))}),format.raw/*36.22*/("""
+                """),format.raw/*37.17*/("""</li>
             </ul>
 
         </div>
@@ -87,8 +76,8 @@ Seq[Any](format.raw/*1.58*/("""
     <container>
         <row>
             <div class="col-md-12">
-                """),_display_(/*58.18*/content),format.raw/*58.25*/("""
-            """),format.raw/*59.13*/("""</div>
+                """),_display_(/*47.18*/content),format.raw/*47.25*/("""
+            """),format.raw/*48.13*/("""</div>
         </row>
     </container>
 <br>
@@ -102,7 +91,7 @@ Seq[Any](format.raw/*1.58*/("""
         </row>
     </footer>
     </container>
-    <script src=""""),_display_(/*73.19*/routes/*73.25*/.Assets.versioned("javascripts/main.js")),format.raw/*73.65*/(""""></script>
+    <script src=""""),_display_(/*62.19*/routes/*62.25*/.Assets.versioned("javascripts/main.js")),format.raw/*62.65*/(""""></script>
 </body>
 
 </html>
@@ -122,11 +111,11 @@ Seq[Any](format.raw/*1.58*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Fri Mar 09 20:27:02 GMT 2018
-                  SOURCE: /home/brandon/Documents/sdevCA/app/views/main.scala.html
-                  HASH: 0670c0fc14d767e36d4a1503a0a3e73820bfdc4d
-                  MATRIX: 970->1|1121->57|1149->59|1275->159|1300->164|1512->349|1527->355|1589->396|1925->705|1956->727|1995->728|2041->743|2186->861|2201->867|2248->893|2512->1130|2539->1148|2578->1149|2624->1164|2674->1187|2699->1203|2739->1205|2792->1230|2829->1240|2844->1246|2890->1271|2927->1281|2940->1285|2971->1295|3016->1322|3029->1327|3068->1328|3121->1353|3158->1363|3173->1369|3218->1393|3282->1426|3328->1444|3491->1580|3519->1587|3560->1600|3873->1886|3888->1892|3949->1932
-                  LINES: 28->1|33->1|35->3|41->9|41->9|45->13|45->13|45->13|58->26|58->26|58->26|58->26|63->31|63->31|63->31|73->41|73->41|73->41|73->41|74->42|74->42|74->42|75->43|75->43|75->43|75->43|75->43|75->43|75->43|76->44|76->44|76->44|77->45|77->45|77->45|77->45|78->46|80->48|90->58|90->58|91->59|105->73|105->73|105->73
+                  DATE: Mon Mar 12 18:20:52 GMT 2018
+                  SOURCE: /home/wdd/webapps/sdevCA1/app/views/main.scala.html
+                  HASH: e756664696eee0a88b48d0b093cfd00f959bf4e6
+                  MATRIX: 970->1|1121->57|1149->59|1275->159|1300->164|1513->350|1528->356|1590->397|1989->769|2004->775|2051->801|2139->862|2166->880|2205->881|2251->896|2301->919|2326->935|2366->937|2419->962|2456->972|2471->978|2517->1003|2554->1013|2567->1017|2598->1027|2643->1054|2656->1059|2695->1060|2748->1085|2785->1095|2800->1101|2845->1125|2909->1158|2954->1175|3117->1311|3145->1318|3186->1331|3499->1617|3514->1623|3575->1663
+                  LINES: 28->1|33->1|35->3|41->9|41->9|46->14|46->14|46->14|60->28|60->28|60->28|63->31|63->31|63->31|63->31|64->32|64->32|64->32|65->33|65->33|65->33|65->33|65->33|65->33|65->33|66->34|66->34|66->34|67->35|67->35|67->35|67->35|68->36|69->37|79->47|79->47|80->48|94->62|94->62|94->62
                   -- GENERATED --
               */
           

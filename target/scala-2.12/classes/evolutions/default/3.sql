@@ -8,4 +8,4 @@ insert into user (email,name,password,role) values ( 'admin@easyltd.com', 'Kathl
 
 insert into user (email,name,password,role) values ( 'manager@easyltd.com', 'Carol Manager', 'password', 'manager' );
 
-insert into user (email,name,password,role) values ( 'customer@easyltd.com', 'Frank Customer', 'password', 'customer' );
+insert into user (email,name,password,role) values ( 'employee@easyltd.com', 'Frank Employee', 'password', 'Employee' );

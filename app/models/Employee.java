@@ -42,7 +42,7 @@ public class Employee extends Model {
         }
     
         // Constructor to initialise object
-
+        
         public Employee(Long id, String name, Department department) {
             this.id = id;
             this.name = name;
